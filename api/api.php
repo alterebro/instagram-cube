@@ -11,6 +11,8 @@ $allowedHosts = array(
 );
 
 $queryParam = '@alterebro';
+$cachePath = __DIR__ . '/../data/';
+
 if ( (isset($_GET['q'])) && !empty($_GET['q']) && in_array($httpHost, $allowedHosts)) {
 
     $queryURL = $_GET['q'];
@@ -19,8 +21,10 @@ if ( (isset($_GET['q'])) && !empty($_GET['q']) && in_array($httpHost, $allowedHo
 }
 
 header("Access-Control-Allow-Origin: *");
-$feed = new InstagramFeed(
-    "@alterebro",
-    __DIR__ . '/../data/'
-);
-$feed->JSON();
+header("Content-type: application/json; charset=utf-8");
+ob_start("ob_gzhandler");
+
+         $feed = new InstagramFeed($queryParam, $cachePath);
+    echo $feed->load();
+
+ob_end_flush();
