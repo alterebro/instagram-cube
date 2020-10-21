@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Instagram Cube Feed</title>
+    <meta name="description" content="Oh lord! It's your Instagram latest pictures in a f**cking cube!" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="Jorge Moreno aka moro, moro.es (@alterebro)" />
+    <meta name="google" content="notranslate" />
+    <link rel="me" href="https://twitter.com/alterebro" />
+    <link rel="shortcut icon" href="./cube/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./cube/cube.css" />
+</head>
+<body>
+
+<div id="app" v-cloak>
+    <cube-head inline-template>
+        <header>
+            <h1><i class="icon icon-cube"></i> <a href="https://instagram-feed.alterebro.now.sh/" title="InstaCube : Your Instagram Feed in a Cube">InstaCube :</a></h1>
+            <p>Your Instagram Feed... <em>in a Cube!</em></p>
+            <form @submit.prevent="requestFeed()">
+                <label for="query">{{ instagramQueryType.symbol }}</label>
+                <input type="text" id="query" v-model="instagramQuery" />
+                <select v-model="instagramQueryType">
+                    <option v-for="(type, i) in instagramQueryTypes" :value="type">{{ type.type }}</option>
+                </select>
+                <input type="submit" value="Show!" />
+            </form>
+        </header>
+    </cube-head>
+    <cube inline-template>
+        <main :style="cubeContainer" v-show="instagramFeed.length">
+            <div class="cube" :style="cubeRotation">
+                <div v-for="item in instagramFeed">
+                    <a :href="item.link" target="_blank"><img :src="item.thumb" :alt="item.alt" /></a>
+                </div>
+            </div>
+            <div class="cube-shadow" :style="cubeShadow"></div>
+        </main>
+    </cube>
+    <cube-foot inline-template>
+        <footer>
+            <ul class="cube-sideselector" v-show="instagramFeed.length">
+                <li v-for="side in cubeSides" :class="[side.side, { active : (side.side == cubeSideCurrent.side) }]"><button @click="changeSide(side)" :title="side.side" v-html="side.label"></button></li>
+            </ul>
+            <ul class="cube-action" v-show="instagramFeed.length">
+                <li v-if="cubeRotate"><button @click="stopRotation()" title="Pause Rotation">&#x30;</button></li>
+                <li v-else><button @click="resumeRotation()" title="Resume Rotation">&#x39;</button></li>
+                <li><button @click="zoomIn()" title="Zoom In">&#x37;</button></li>
+                <li><button @click="zoomOut()" title="Zoom Out">&#x38;</button></li>
+                <li v-if="cubeRotationSwing" class="lock"><button @click="lockCubeRotation()" title="Lock Cube Position">l</button></li>
+                <li v-else class="lock"><button @click="unlockCubeRotation()" title="Unlock Cube Position">u</button></li>
+            </ul>
+            <p>
+                <i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro">Jorge Moreno. <strong>@alterebro</strong></a>
+                <br /><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-feed">/alterebro/instagram-feed/</a>
+            </p>
+        </footer>
+    </cube-foot>
+</div>
+
+<!-- <script charset="utf-8" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+<script charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script charset="utf-8" src="./cube/cube.js"></script>
+</body>
+</html>

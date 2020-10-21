@@ -1,0 +1,392 @@
+// -----------------------
+// Variables @less
+@mobile-breakpoint : 640;
+
+// -----------------------
+// Media Queries
+@mobile 	: ~"all and (max-width: @{mobile-breakpoint}px)"; 	// Default
+@non-mobile : ~"all and (min-width: @{mobile-breakpoint}px)"; 	// Matchs both @tablet and @desktop
+
+// -----------------------
+// Mixins @less
+.unspaced() {
+    margin: 0;
+    padding: 0;
+}
+.full-size() {
+    width: 100%;
+    height: 100%;
+}
+
+// -----------------------
+// Fonts
+@font-face {
+    font-family: 'smiley';
+    src: url('./font/smiley.eot?22743220');
+    src: url('./font/smiley.eot?22743220#iefix') format('embedded-opentype'),
+        url('./font/smiley.woff?22743220') format('woff'),
+        url('./font/smiley.ttf?22743220') format('truetype'),
+        url('./font/smiley.svg?22743220#smiley') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// -----------------------
+// CSS Variables
+:root {
+    --cube-size: 400px;
+    --bg-color: #f0f0f0;
+    --fg-color: #323232;
+    --primary-color: #07c;
+    --aux-color: #4db5ff;
+    --form-el-size: 30px;
+    --form-el-spacing: 5px;
+    --spacing: 2rem;
+    --form-el-size-mobile: 26px;
+    --spacing-mobile: 1rem;
+}
+
+// -----------------------
+// Global Style Reset
+html, body, ul, li, p, h1, form, button {
+    .unspaced();
+}
+li { list-style: none }
+
+
+// -----------------------
+// Document
+html {
+    line-height: 1;
+	text-size-adjust: 100%;
+	box-sizing: border-box;
+	font-size: 62.5%;
+	word-break: break-word;
+    cursor: default;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Droid Sans", "Helvetica Neue", Arial, sans-serif;;
+    font-size: 1.3em;
+    font-weight: 400;
+    line-height: 1.6;
+    background: var(--bg-color);
+    color: var(--fg-color);
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+	background-repeat: no-repeat;
+}
+
+// -----------------------
+// Global
+html, body, #app {
+    .full-size();
+    overflow: hidden;
+}
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+// -----------------------
+// App
+#app {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    &[v-cloak] {
+        display: none;
+    }
+}
+
+// -------------
+// #app > header
+header {
+    padding: 2rem;
+    text-align: center;
+
+    h1 {
+        display: inline-block;
+        font-size: 100%;
+    }
+    p {
+        display: inline-block;
+        margin: 0 0 1rem 0;
+    }
+    form {
+        white-space: nowrap;
+        position: relative;
+        display: flex;
+
+        input, select {
+            border: none;
+            border-radius: 0;
+            line-height: 30px;
+            height: 30px;
+        }
+
+        label {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            display: block;
+            line-height: 30px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        input[type="text"] {
+            background: #fff;
+            padding: 0 5px 0 25px;
+            box-shadow: inset 0 1px 0 rgba(0, 0, 0, .15);
+            width: 12rem;
+        }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: #fff;
+            padding: 0 3rem 0 1rem;
+            width: 10rem;
+            box-shadow: 0 5px 15px -10px rgba(0, 0, 0, .25);
+            margin: 0 1rem;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background: var(--aux-color);
+            color: #fff;
+            padding: 0 2rem;
+            box-shadow: 0 5px 15px -10px rgba(0, 0, 0, .25);
+            cursor: pointer;
+            transition: all .35s;
+
+            &:hover {
+                background: var(--primary-color);
+            }
+        }
+    }
+}
+
+// -------------
+// #app > main
+main {
+    position: relative;
+    width: var(--cube-size);
+    height: var(--cube-size);
+    margin-top: 0;
+    perspective: ~"calc( var(--cube-size) * 2 )";
+    transition: all .5s;
+}
+
+    // main > .cube
+    .cube,
+    .cube > div a,
+    .cube > div a img {
+        display: block;
+        .full-size();
+    }
+    .cube {
+        position: relative;
+        transform-style: preserve-3d;
+        transform: translateZ( ~"calc( var(--cube-size) / 2 )" );
+        transform-origin: center center;
+        transition: all .5s;
+
+        > div {
+            position: absolute;
+            width: var(--cube-size);
+            height: var(--cube-size);
+            overflow: hidden;
+            transition: all .5s;
+
+            a img {
+                object-fit: cover;
+                object-position: center center;
+            }
+
+            &:nth-child(1) { transform: rotateY(  0deg) translateZ( ~"calc( var(--cube-size) / 2 )" ); }
+            &:nth-child(2) { transform: rotateY( 90deg) translateZ( ~"calc( var(--cube-size) / 2 )" ); }
+            &:nth-child(3) { transform: rotateY(180deg) translateZ( ~"calc( var(--cube-size) / 2 )" ); }
+            &:nth-child(4) { transform: rotateY(-90deg) translateZ( ~"calc( var(--cube-size) / 2 )" ); }
+            &:nth-child(5) { transform: rotateX( 90deg) translateZ( ~"calc( var(--cube-size) / 2 )" ); }
+            &:nth-child(6) { transform: rotateX(-90deg) translateZ( ~"calc( var(--cube-size) / 2 )" ); }
+        }
+    }
+
+    // main > .cube-shadow
+    .cube-shadow {
+        position: absolute;
+        top: 100%;
+        z-index: -1;
+        width: 100%;
+        height: 10%;
+        background-image: radial-gradient(closest-side, rgba(0, 0, 0, .2), transparent);
+        transition: all .5s;
+    }
+
+// -------------
+// #app > footer
+footer {
+
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+
+    li, button { .icon() }
+
+    ul {
+        margin: 0 auto;
+        display: grid;
+        grid-gap: var(--form-el-spacing);
+
+        li {
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            button {
+                cursor: pointer;
+                display: block;
+                line-height: 1;
+                width: var(--form-el-size);
+                height: var(--form-el-size);
+                border: none;
+                background: #fff;
+                box-shadow: 0 5px 15px -5px rgba(0, 0, 0, .25);
+                color: var(--primary-color);
+                transition: all .35s ease-in-out;
+
+                &:hover {
+                    color: #000;
+                    box-shadow: none;
+                }
+                &:focus, &:active { outline: none }
+            }
+            &.active {
+                button {
+                    color: #fff;
+                    box-shadow: none;
+                    background: var(--aux-color);
+                }
+            }
+        }
+    }
+}
+
+// -------------
+// -------------
+
+
+// -------------
+// Button Set
+ul.cube-action {
+    position: absolute;
+    bottom: var(--spacing);
+    left: var(--spacing);
+    height: ~"calc( (var(--form-el-size) * 4) + (var(--form-el-spacing) * 3) )"; // 135px;
+    width: var(--form-el-size);
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+ul.cube-sideselector {
+    position: absolute;
+    bottom: var(--spacing);
+    right: var(--spacing);
+    width: ~"calc( (var(--form-el-size) * 4) + (var(--form-el-spacing) * 3) )";
+    height: ~"calc( (var(--form-el-size) * 3) + (var(--form-el-spacing) * 2) )";
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+        ". top . ."
+        "left front right back"
+        ". bottom . lock";
+
+    li {
+        &.top { grid-area: top; }
+        &.left { grid-area: left; }
+        &.front { grid-area: front; }
+        &.back { grid-area: back; }
+        &.right { grid-area: right; }
+        &.bottom { grid-area: bottom; }
+        &.lock { grid-area: lock; }
+    }
+}
+
+// -------------
+// -------------
+
+// Helper Classes
+.icon {
+    font-family: "smiley";
+
+}
+i.icon {
+    display: inline-block;
+    padding: 0 3px;
+    font-style: normal;
+}
+// .icon-pause:before { content: '\30'; } /* '0' */
+// .icon-left-thin:before { content: '\31'; } /* '1' */
+// .icon-right-thin:before { content: '\32'; } /* '2' */
+// .icon-up-thin:before { content: '\33'; } /* '3' */
+// .icon-down-thin:before { content: '\34'; } /* '4' */
+// .icon-level-down:before { content: '\35'; } /* '5' */
+// .icon-level-up:before { content: '\36'; } /* '6' */
+// .icon-zoom-in:before { content: '\37'; } /* '7' */
+// .icon-zoom-out:before { content: '\38'; } /* '8' */
+// .icon-play:before { content: '\39'; } /* '9' */
+.icon-cube:before { content: '\63'; } /* 'c' */
+.icon-github:before { content: '\67'; } /* 'g' */
+// .icon-lock:before { content: '\6c'; } /* 'l' */
+.icon-twitter:before { content: '\74'; } /* 't' */
+// .icon-lock-open:before { content: '\75'; } /* 'u' */
+
+
+// -----------------------
+// Responsiveness
+@media @mobile {
+
+    body {
+        font-size: 1.2em;
+    }
+    header {
+        padding: var(--spacing-mobile);
+
+        form {
+            select {
+                margin: 0 .5rem;
+            }
+            input[type="submit"] {
+                padding: 0 1rem;
+            }
+        }
+    }
+
+    footer {
+        text-align: left;
+        padding: 0 var(--spacing-mobile) var(--spacing-mobile) 5rem;
+
+        p span { display: none }
+        ul li {
+            button {
+                width: var(--form-el-size-mobile);
+                height: var(--form-el-size-mobile);
+            }
+        }
+    }
+    ul.cube-action {
+        bottom: var(--spacing-mobile);
+        left: var(--spacing-mobile);
+        height: ~"calc( (var(--form-el-size-mobile) * 4) + (var(--form-el-spacing) * 3) )";
+        width: var(--form-el-size-mobile);
+    }
+
+    ul.cube-sideselector {
+        bottom: var(--spacing-mobile);
+        right: var(--spacing-mobile);
+        width: ~"calc( (var(--form-el-size-mobile) * 4) + (var(--form-el-spacing) * 3) )";
+        height: ~"calc( (var(--form-el-size-mobile) * 3) + (var(--form-el-spacing) * 2) )";
+    }
+}
