@@ -35,15 +35,20 @@
 // CSS Variables
 :root {
     --cube-size: 400px;
-    --bg-color: #f0f0f0;
-    --fg-color: #323232;
-    --primary-color: #07c;
-    --aux-color: #4db5ff;
+    // --bg-color: #f0f0f0;
+    // --fg-color: #323232;
+    // --primary-color: #07c;
+    // --aux-color: #4db5ff;
     --form-el-size: 30px;
     --form-el-spacing: 5px;
     --spacing: 2rem;
     --form-el-size-mobile: 26px;
     --spacing-mobile: 1rem;
+
+    --fg-color: #f0f0f0;
+    --bg-color: #323232;
+    --primary-color: #09f;
+    --aux-color: #0af;
 }
 
 // -----------------------
@@ -110,15 +115,22 @@ header {
     h1 {
         display: inline-block;
         font-size: 100%;
+        font-weight: 500;
+
+        i {
+            opacity: .5;
+        }
     }
     p {
         display: inline-block;
-        margin: 0 0 1rem 0;
+        margin: 0 0 1rem .5rem;
+        font-weight: 300;
     }
     form {
         white-space: nowrap;
         position: relative;
         display: flex;
+
 
         input, select {
             border: none;
@@ -151,7 +163,7 @@ header {
             width: 9rem;
             box-shadow: 0 5px 15px -10px rgba(0, 0, 0, .25);
             margin: 0 1rem;
-            border-radius: 5px;
+            border-radius: 2px;
         }
         input[type="submit"] {
             background: var(--aux-color);
@@ -160,6 +172,7 @@ header {
             box-shadow: 0 5px 15px -10px rgba(0, 0, 0, .25);
             cursor: pointer;
             transition: all .35s;
+            border-radius: 2px;
 
             &:hover {
                 background: var(--primary-color);
@@ -256,6 +269,7 @@ footer {
                 box-shadow: 0 5px 15px -5px rgba(0, 0, 0, .25);
                 color: var(--primary-color);
                 transition: all .35s ease-in-out;
+                border-radius: 2px;
 
                 &:hover {
                     color: #000;
