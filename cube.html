@@ -44,10 +44,10 @@
                 <li v-for="side in cubeSides" :class="[side.side, { active : (side.side == cubeSideCurrent.side) }]"><button @click="changeSide(side)" :title="side.side" v-html="side.label"></button></li>
             </ul>
             <ul class="cube-action" v-show="instagramFeed.length">
-                <li v-if="cubeRotate"><button @click="stopRotation()" title="Pause Rotation">&#x30;</button></li>
-                <li v-else><button @click="resumeRotation()" title="Resume Rotation">&#x39;</button></li>
                 <li><button @click="zoomIn()" title="Zoom In">&#x37;</button></li>
                 <li><button @click="zoomOut()" title="Zoom Out">&#x38;</button></li>
+                <li v-if="cubeRotate"><button @click="stopRotation()" title="Pause Rotation">&#x30;</button></li>
+                <li v-else><button @click="resumeRotation()" title="Resume Rotation">&#x39;</button></li>
                 <li v-if="cubeRotationSwing" class="lock"><button @click="lockCubeRotation()" title="Lock Cube Position">l</button></li>
                 <li v-else class="lock"><button @click="unlockCubeRotation()" title="Unlock Cube Position">u</button></li>
             </ul>

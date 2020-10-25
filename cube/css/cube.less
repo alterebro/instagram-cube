@@ -375,10 +375,10 @@ ul.cube-sideselector {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
     grid-template-areas:
-        ". back ."
         ". top ."
         "left front right"
         ". bottom ."
+        ". back ."
         ;
 
     li {
@@ -388,7 +388,6 @@ ul.cube-sideselector {
         &.back { grid-area: back; }
         &.right { grid-area: right; }
         &.bottom { grid-area: bottom; }
-        // &.lock { grid-area: lock; }
     }
 }
 
