@@ -104,6 +104,68 @@ a {
     &[v-cloak] {
         display: none;
     }
+
+
+    // Background Scene
+    &::before, &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+    }
+    &:before {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-color);
+        background-image:
+            radial-gradient(circle at center, rgba(255, 255, 255, .35) 0, rgba(255, 255, 255, 0) 25%),
+            radial-gradient(circle at center, rgba(255, 255, 255, .1) 0, rgba(255, 255, 255, 0) 50%),
+            radial-gradient(
+                circle at center,
+                transparent 0, transparent 5%,
+                rgba(0, 0, 0, .1) 5%, rgba(0, 0, 0, .1) 10%,
+                transparent 10%, transparent 15%,
+                rgba(0, 0, 0, .1) 15%, rgba(0, 0, 0, .1) 20%,
+                transparent 20%, transparent 25%,
+                rgba(0, 0, 0, .1) 25%, rgba(0, 0, 0, .1) 30%,
+                transparent 30%, transparent 35%,
+                rgba(0, 0, 0, .1) 35%, rgba(0, 0, 0, .1) 40%,
+                transparent 40%, transparent 45%,
+                rgba(0, 0, 0, .1) 45%, rgba(0, 0, 0, .1) 50%,
+                transparent 50%, transparent 55%,
+                rgba(0, 0, 0, .1) 55%, rgba(0, 0, 0, .1) 60%,
+                transparent 60%, transparent 65%,
+                rgba(0, 0, 0, .1) 65%, rgba(0, 0, 0, .1) 70%,
+                transparent 70%, transparent 75%,
+                rgba(0, 0, 0, .1) 75%, rgba(0, 0, 0, .1) 80%,
+                transparent 80%, transparent 85%,
+                rgba(0, 0, 0, .1) 85%, rgba(0, 0, 0, .1) 90%,
+                transparent 90%, transparent 95%,
+                rgba(0, 0, 0, .1) 95%, rgba(0, 0, 0, .1) 100%
+            );
+    }
+    &:after {
+        bottom: 0;
+        left: 0;
+        width: 200%;
+        height: 60%;
+        margin-left: -50%;
+        margin-bottom: -10%;
+        border-radius: 50%;
+        background-color: var(--bg-color);
+        background-image:
+
+            linear-gradient(transparent, transparent 50%, var(--bg-color)),
+            linear-gradient(90deg, var(--bg-color), var(--bg-color) 25%, rgba(0, 0, 0, .25) 40%, rgba(0, 0, 0, .25) 60%, var(--bg-color) 75%, var(--bg-color)),
+            linear-gradient(rgba(0, 0, 0, .25), var(--bg-color) 35%)
+            // ,radial-gradient(ellipse at top center, rgba(0, 0, 0, .25) 0, rgba(0, 0, 0, 0) 25%)
+            ;
+
+        box-shadow: 0 0 25px 0 var(--bg-color);
+    }
+
 }
 
 // -------------
