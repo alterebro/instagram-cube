@@ -121,30 +121,7 @@ a {
         background-color: var(--bg-color);
         background-image:
             radial-gradient(circle at center, rgba(255, 255, 255, .35) 0, rgba(255, 255, 255, 0) 25%),
-            radial-gradient(circle at center, rgba(255, 255, 255, .1) 0, rgba(255, 255, 255, 0) 50%),
-            radial-gradient(
-                circle at center,
-                transparent 0, transparent 5%,
-                rgba(0, 0, 0, .1) 5%, rgba(0, 0, 0, .1) 10%,
-                transparent 10%, transparent 15%,
-                rgba(0, 0, 0, .1) 15%, rgba(0, 0, 0, .1) 20%,
-                transparent 20%, transparent 25%,
-                rgba(0, 0, 0, .1) 25%, rgba(0, 0, 0, .1) 30%,
-                transparent 30%, transparent 35%,
-                rgba(0, 0, 0, .1) 35%, rgba(0, 0, 0, .1) 40%,
-                transparent 40%, transparent 45%,
-                rgba(0, 0, 0, .1) 45%, rgba(0, 0, 0, .1) 50%,
-                transparent 50%, transparent 55%,
-                rgba(0, 0, 0, .1) 55%, rgba(0, 0, 0, .1) 60%,
-                transparent 60%, transparent 65%,
-                rgba(0, 0, 0, .1) 65%, rgba(0, 0, 0, .1) 70%,
-                transparent 70%, transparent 75%,
-                rgba(0, 0, 0, .1) 75%, rgba(0, 0, 0, .1) 80%,
-                transparent 80%, transparent 85%,
-                rgba(0, 0, 0, .1) 85%, rgba(0, 0, 0, .1) 90%,
-                transparent 90%, transparent 95%,
-                rgba(0, 0, 0, .1) 95%, rgba(0, 0, 0, .1) 100%
-            );
+            radial-gradient(circle at center, rgba(255, 255, 255, .1) 0, rgba(255, 255, 255, 0) 50%);
     }
     &:after {
         bottom: 0;
@@ -307,6 +284,8 @@ footer {
     text-align: center;
     padding: 2rem;
     width: 100%;
+    color: rgba(255, 255, 255, .5);
+    font-weight: 300;
 
     li, button { .icon() }
 
