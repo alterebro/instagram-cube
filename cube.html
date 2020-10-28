@@ -14,20 +14,30 @@
 <body>
 
 <div id="app" v-cloak>
-    <cube-head inline-template>
+    <cube-header inline-template>
         <header>
-            <h1><i class="icon icon-cube"></i> <a href="#" title="Instagram Cube : Your Instagram Feed in a Cube">InstaCube</a></h1>
-            <p>Your Instagram Feed... <em>in a Cube!</em></p>
-            <form @submit.prevent="requestFeed()">
-                <label for="query">{{ instagramQueryType.symbol }}</label>
-                <input type="text" id="query" v-model="instagramQuery" />
+            <h1><a href="#" title="Instagram Cube"><i class="icon icon-cube"></i> <strong>InstaCube</strong></a></h1>
+            <form>
                 <select v-model="instagramQueryType">
                     <option v-for="(type, i) in instagramQueryTypes" :value="type">{{ type.type }}</option>
                 </select>
+                <label for="query">{{ instagramQueryType.symbol }}</label>
+                <input type="text" id="query" v-model="instagramQuery" />
                 <input type="submit" value="Show!" />
             </form>
+            <details>
+                <summary>Info</summary>
+                <div>
+                    <h2>Instagram Cube</h2>
+                    <p>Your Instagram Feed... <em>in a Cube!</em></p>
+                    <ul>
+                        <li><i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro">Jorge Moreno. <strong>@alterebro</strong></a></li>
+                        <li><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-cube">/alterebro/instagram-cube/</a></li>
+                    </ul>
+                </div>
+            </details>
         </header>
-    </cube-head>
+    </cube-header>
     <cube inline-template>
         <main :style="cubeContainer" v-show="instagramFeed.length">
             <div class="cube" :style="cubeRotation">
@@ -51,10 +61,10 @@
                 <li><button @click="zoomIn()" title="Zoom In">&#x37;</button></li>
                 <li><button @click="zoomOut()" title="Zoom Out">&#x38;</button></li>
             </ul>
-            <p>
+            <!-- <p>
                 <i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro">Jorge Moreno. <strong>@alterebro</strong></a>
                 <br /><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-cube">/alterebro/instagram-cube/</a>
-            </p>
+            </p> -->
         </footer>
     </cube-foot>
 </div>

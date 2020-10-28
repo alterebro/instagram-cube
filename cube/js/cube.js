@@ -88,7 +88,7 @@ const Store = {
             _xhr.onreadystatechange = () => {
                 if (_xhr.readyState === 4 && _xhr.status == "200" && _xhr.responseText != '') {
 
-                    console.log(_xhr);
+                    // console.log(_xhr);
 
                     this.state.instagramFeed = JSON.parse(_xhr.responseText).slice(0,6);
                     if ( init) { this.autoRotate() }
@@ -96,19 +96,19 @@ const Store = {
                 } else {
 
                     this.state.instagramFeed = [];
-                    console.log(_xhr);
+                    // console.log(_xhr);
                 }
             }
 
             _xhr.onload = function(l) {
 
-                console.log('Loaded', l);
-                console.log(_xhr);
+                // console.log('Loaded', l);
+                // console.log(_xhr);
             };
             _xhr.onerror = function(e) {
 
-                console.log('Error', e);
-                console.log(_xhr);
+                // console.log('Error', e);
+                // console.log(_xhr);
 
             };
 
@@ -118,9 +118,43 @@ const Store = {
 
 // ----------
 // Components
-const CubeHead = {
+
+// const CubeHead = {
+//     data: function () { return Store.state },
+//     name : "CubeHead",
+//     methods : {
+//         requestFeed : function() {
+//             let _q = this.instagramQuery.replace(/[^a-z0-9\._-]/gim,"").trim().substring(0, 30);
+//                 _q = (this.instagramQueryType.symbol == '@') ? `@${_q}` : _q;
+//
+//             console.log(_q);
+//             Store.getInstagramFeed(_q, false);
+//         }
+//     },
+//     created() {
+//         Store.state.instagramQueryType = Store.state.instagramQueryTypes[0];
+//     }
+// }
+
+// <cube-head inline-template>
+//     <header>
+//         <h1><i class="icon icon-cube"></i> <a href="#" title="Instagram Cube : Your Instagram Feed in a Cube">InstaCube</a></h1>
+//         <p>Your Instagram Feed... <em>in a Cube!</em></p>
+//         <form @submit.prevent="requestFeed()">
+//             <label for="query">{{ instagramQueryType.symbol }}</label>
+//             <input type="text" id="query" v-model="instagramQuery" />
+//             <select v-model="instagramQueryType">
+//                 <option v-for="(type, i) in instagramQueryTypes" :value="type">{{ type.type }}</option>
+//             </select>
+//             <input type="submit" value="Show!" />
+//         </form>
+//     </header>
+// </cube-head>
+
+
+const CubeHeader = {
     data: function () { return Store.state },
-    name : "CubeHead",
+    name : "CubeHeader",
     methods : {
         requestFeed : function() {
             let _q = this.instagramQuery.replace(/[^a-z0-9\._-]/gim,"").trim().substring(0, 30);
@@ -171,6 +205,8 @@ const CubeFoot = {
     }
 }
 
+
+
 // ----------
 // Main App
 const App = new Vue({
@@ -178,7 +214,8 @@ const App = new Vue({
     components : {
         Cube,
         CubeFoot,
-        CubeHead
+        // CubeHead,
+        CubeHeader
     },
     created : function() {
         let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -186,6 +223,6 @@ const App = new Vue({
         Store.state.cubeSize = Math.floor(Math.min(w, h) / 2.5);
         Store.state.cubeSideCurrent = Store.state.cubeSides[0];
         Store.setCubeSize();
-        Store.getInstagramFeed('@alterebro');
+        // Store.getInstagramFeed('@alterebro');
     }
 });

@@ -68,6 +68,7 @@ html {
 	font-size: 62.5%;
 	word-break: break-word;
     cursor: default;
+
 }
 body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
@@ -142,6 +143,7 @@ a {
 
 // -------------
 // #app > header
+/*
 header {
     padding: 2rem;
     text-align: center;
@@ -213,6 +215,36 @@ header {
         }
     }
 }
+*/
+
+header {
+    display: flex;
+    width: 100%;
+    height: 54px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+
+    > h1 {
+        strong {
+            display: none;
+        }
+    }
+    > form {
+
+    }
+    > details {
+        > div {
+            display: none;
+        }
+    }
+
+}
+
+
 
 // -------------
 // #app > main
