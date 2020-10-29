@@ -18,7 +18,7 @@
         <header>
             <h1><a href="#" title="Instagram Cube"><i class="icon icon-cube"></i> <strong>InstaCube</strong></a></h1>
             <form>
-                <select v-model="instagramQueryType">
+                <select class="select-css" v-model="instagramQueryType">
                     <option v-for="(type, i) in instagramQueryTypes" :value="type">{{ type.type }}</option>
                 </select>
                 <label for="query">

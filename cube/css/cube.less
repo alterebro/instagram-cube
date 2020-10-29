@@ -234,7 +234,6 @@ header {
     > form {
 
         input, select {
-            border: none;
             border-radius: 4px;
             line-height: 28px;
             height: 28px;
@@ -248,11 +247,40 @@ header {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
+
+            border: solid 1px #dbdbdb;
+            background-color: #fff;
+
             border: solid 1px #dbdbdb;
             background: #fff;
-            padding: 0 .5rem;
-            width: 9rem;
+            width: 11rem;
+
+        	padding: 0 1.5em 0 .5em;
+
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292.4 292.4'%3E%3Cpath fill='%230095f6' d='M287 69a18 18 0 00-13-5H18c-5 0-9 2-12 5a18 18 0 00-6 13c0 5 2 10 5 13l128 128c4 4 8 5 13 5s9-1 13-5L287 95c4-3 5-8 5-13s-2-9-5-13z'/%3E%3C/svg%3E");
+        	// background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+        	background-repeat: no-repeat;
+        	background-position: right .7em top 50%;
+        	background-size: .65em auto;
         }
+
+        select::-ms-expand {
+        	display: none;
+        }
+        select:hover {
+        	border-color: #888;
+        }
+        select:focus {
+        	border-color: #aaa;
+        	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+        	box-shadow: 0 0 0 3px -moz-mac-focusring;
+        	color: #222;
+        	outline: none;
+        }
+        select option {
+        	font-weight:normal;
+        }
+
 
         label {
             position: relative;
@@ -281,6 +309,7 @@ header {
             cursor: pointer;
             transition: all .35s;
             font-weight: 500;
+            border: none;
 
             &:hover {
                 background: var(--aux-color);
