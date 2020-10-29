@@ -21,8 +21,10 @@
                 <select v-model="instagramQueryType">
                     <option v-for="(type, i) in instagramQueryTypes" :value="type">{{ type.type }}</option>
                 </select>
-                <label for="query">{{ instagramQueryType.symbol }}</label>
-                <input type="text" id="query" v-model="instagramQuery" />
+                <label for="query">
+                    <strong>{{ instagramQueryType.symbol }}</strong>
+                    <input type="text" id="query" v-model="instagramQuery" />
+                </label>
                 <input type="submit" value="Show!" />
             </form>
             <details>
