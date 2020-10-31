@@ -14,18 +14,18 @@
 <body>
 
 <div id="app" v-cloak>
-    <cube-header inline-template>
+    <cube-head inline-template>
         <header>
             <h1><a href="#" title="Instagram Cube"><i class="icon icon-cube"></i> <strong>InstaCube</strong></a></h1>
-            <form>
+            <form @submit.prevent="requestFeed">
                 <select class="select-css" v-model="instagramQueryType">
                     <option v-for="(type, i) in instagramQueryTypes" :value="type">{{ type.type }}</option>
                 </select>
                 <label for="query">
                     <strong>{{ instagramQueryType.symbol }}</strong>
-                    <input type="text" id="query" v-model="instagramQuery" />
+                    <input type="text" @click="focusize($event)" id="query" v-model="instagramQuery" />
                 </label>
-                <input type="submit" value="Show!" />
+                <input type="submit" title="Show!" value="&#8227;" />
             </form>
             <details>
                 <summary>Info</summary>
@@ -39,7 +39,12 @@
                 </div>
             </details>
         </header>
-    </cube-header>
+    </cube-head>
+
+
+
+
+
     <cube inline-template>
         <main :style="cubeContainer" v-show="instagramFeed.length">
             <div class="cube" :style="cubeRotation">
@@ -63,10 +68,6 @@
                 <li><button @click="zoomIn()" title="Zoom In">&#x37;</button></li>
                 <li><button @click="zoomOut()" title="Zoom Out">&#x38;</button></li>
             </ul>
-            <!-- <p>
-                <i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro">Jorge Moreno. <strong>@alterebro</strong></a>
-                <br /><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-cube">/alterebro/instagram-cube/</a>
-            </p> -->
         </footer>
     </cube-foot>
 </div>
