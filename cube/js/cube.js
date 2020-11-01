@@ -107,7 +107,7 @@ const Store = {
 // ----------
 // Components
 const CubeHead = {
-    data: function () { return Store.state },
+    data : function () { return Store.state },
     name : "CubeHead",
     methods : {
         requestFeed : function() {
@@ -125,13 +125,20 @@ const CubeHead = {
     }
 }
 
+const CubeInfo = {
+    data : function() { return Store.state },
+    name : "CubeInfo",
+    methods : {},
+    created() {}
+}
+
 const Cube = {
-    data: function () { return Store.state },
+    data : function () { return Store.state },
     name : "Cube"
 }
 
 const CubeFoot = {
-    data: function () { return Store.state },
+    data : function () { return Store.state },
     name : "CubeFoot",
     methods : {
         changeSide(side) {
@@ -169,9 +176,10 @@ const CubeFoot = {
 const App = new Vue({
     el: '#app',
     components : {
-        Cube,
-        CubeFoot,
         CubeHead,
+        CubeInfo,
+        Cube,
+        CubeFoot
     },
     created : function() {
         let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);

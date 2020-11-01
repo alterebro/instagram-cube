@@ -41,9 +41,18 @@
         </header>
     </cube-head>
 
-
-
-
+    <cube-info inline-template>
+        <aside>
+            <div class="cube-moadlWindow">
+                <h2>Instagram Cube</h2>
+                <p>Your Instagram Feed... <em>in a Cube!</em></p>
+                <ul>
+                    <li><i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro">Jorge Moreno. <strong>@alterebro</strong></a></li>
+                    <li><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-cube">/alterebro/instagram-cube/</a></li>
+                </ul>
+            </div>
+        </aside>
+    </cube-info>
 
     <cube inline-template>
         <main :style="cubeContainer" v-show="instagramFeed.length">

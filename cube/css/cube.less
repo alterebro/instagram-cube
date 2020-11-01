@@ -48,7 +48,7 @@
 
 // -----------------------
 // Global Style Reset
-html, body, ul, li, p, h1, form, button {
+html, body, ul, li, p, h1, h2, form, button {
     .unspaced();
 }
 li { list-style: none }
@@ -331,7 +331,26 @@ header {
     }
 }
 
+// -------------
+// #app > aside
+aside {
+    .unspaced();
+    .full-size();
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+    display: grid;
+    place-items: center;
 
+    > .cube-moadlWindow {
+        background: var(--fg-color);
+        color: var(--bg-color);
+        padding: ~"calc( var(--spacing) * 2 )";
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .75);
+        border-radius: 4px;
+    }
+}
 
 // -------------
 // #app > main
