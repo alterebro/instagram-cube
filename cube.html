@@ -27,23 +27,13 @@
                 </label>
                 <input type="submit" title="Show!" value="&#8227;" />
             </form>
-            <details>
-                <summary>Info</summary>
-                <div>
-                    <h2>Instagram Cube</h2>
-                    <p>Your Instagram Feed... <em>in a Cube!</em></p>
-                    <ul>
-                        <li><i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro">Jorge Moreno. <strong>@alterebro</strong></a></li>
-                        <li><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-cube">/alterebro/instagram-cube/</a></li>
-                    </ul>
-                </div>
-            </details>
+            <p><a href="#info" @click.prevent="showModalWindow">Info</a></p>
         </header>
     </cube-head>
 
     <cube-info inline-template>
-        <aside>
-            <div class="cube-moadlWindow">
+        <aside id="info" v-show="modalWindowOpen" @click.self="hideModalWindow">
+            <div class="cube-modalWindow">
                 <h2>Instagram Cube</h2>
                 <p>Your Instagram Feed... <em>in a Cube!</em></p>
                 <ul>

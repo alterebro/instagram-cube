@@ -29,6 +29,8 @@ const Store = {
         cubeRotationSwing : 25,
         cubeSize : 300,
 
+        modalWindowOpen : false,
+
         // Style Objects
         cubeRotation : {
             transform: 'translateZ(-3600px) rotateX(0deg) rotateY(0deg) translateY(500px)',
@@ -101,6 +103,10 @@ const Store = {
             _xhr.onerror = function(e) { };
 
         _xhr.send(null);
+    },
+
+    toggleModalWindow : function(show) {
+        this.state.modalWindowOpen = show;
     }
 }
 
@@ -110,14 +116,17 @@ const CubeHead = {
     data : function () { return Store.state },
     name : "CubeHead",
     methods : {
-        requestFeed : function() {
+        requestFeed() {
             let _q = this.instagramQuery.replace(/[^a-z0-9\._-]/gim,"").trim().substring(0, 30);
                 _q = (this.instagramQueryType.symbol == '@') ? `@${_q}` : _q;
 
             Store.getInstagramFeed(_q, false);
         },
-        focusize : function(e) {
+        focusize(e) {
             e.target.select();
+        },
+        showModalWindow() {
+            Store.toggleModalWindow(true);
         }
     },
     created() {
@@ -128,7 +137,11 @@ const CubeHead = {
 const CubeInfo = {
     data : function() { return Store.state },
     name : "CubeInfo",
-    methods : {},
+    methods : {
+        hideModalWindow() {
+            Store.toggleModalWindow(false);
+        }
+    },
     created() {}
 }
 
