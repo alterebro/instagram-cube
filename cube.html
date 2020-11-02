@@ -32,7 +32,7 @@
     </cube-head>
 
     <cube-info inline-template>
-        <aside id="info" v-show="modalWindowOpen" @click.self="hideModalWindow">
+        <aside id="info" :class="{ active : modalWindowOpen }" @click.self="hideModalWindow">
             <div class="cube-modalWindow">
                 <h2>Instagram Cube</h2>
                 <p>Your Instagram Feed... <em>in a Cube!</em></p>
@@ -40,6 +40,7 @@
                     <li><i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro">Jorge Moreno. <strong>@alterebro</strong></a></li>
                     <li><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-cube">/alterebro/instagram-cube/</a></li>
                 </ul>
+                <button type="button" @click="hideModalWindow">Close</button>
             </div>
         </aside>
     </cube-info>
