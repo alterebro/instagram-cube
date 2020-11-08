@@ -21,12 +21,12 @@
 // -----------------------
 // Fonts
 @font-face {
-    font-family: 'smiley';
-    src: url('../fonts/smiley.eot?22743220');
-    src: url('../fonts/smiley.eot?22743220#iefix') format('embedded-opentype'),
-        url('../fonts/smiley.woff?22743220') format('woff'),
-        url('../fonts/smiley.ttf?22743220') format('truetype'),
-        url('../fonts/smiley.svg?22743220#smiley') format('svg');
+    font-family: 'icons';
+    src: url('../fonts/icons.eot?48312305');
+    src: url('../fonts/icons.eot?48312305#iefix') format('embedded-opentype'),
+        url('../fonts/icons.woff?48312305') format('woff'),
+        url('../fonts/icons.ttf?48312305') format('truetype'),
+        url('../fonts/icons.svg?48312305#icons') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -217,6 +217,7 @@ header {
 */
 
 header {
+
     display: flex;
     width: 100%;
     height: 54px;
@@ -245,7 +246,7 @@ header {
             height: 28px;
             margin: 0 .25rem;
             padding: 0;
-            vertical-align: baseline;
+            vertical-align: bottom;
             font: inherit;
 
             &:focus {
@@ -319,8 +320,10 @@ header {
 
             box-shadow: 0 2px 1px rgba(0, 0, 0, .05);
 
-
+            font-family: 'icons';
+            font-size: 85%;
             &:hover { background: var(--aux-color); }
+
         }
     }
 
@@ -519,13 +522,14 @@ ul.cube-sideselector {
 
 // Helper Classes
 .icon {
-    font-family: "smiley";
+    font-family: "icons";
 }
 i.icon {
     display: inline-block;
     padding: 0 3px;
     font-style: normal;
 }
+
 // .icon-pause:before { content: '\30'; } /* '0' */
 // .icon-left-thin:before { content: '\31'; } /* '1' */
 // .icon-right-thin:before { content: '\32'; } /* '2' */
@@ -536,11 +540,15 @@ i.icon {
 // .icon-zoom-in:before { content: '\37'; } /* '7' */
 // .icon-zoom-out:before { content: '\38'; } /* '8' */
 // .icon-play:before { content: '\39'; } /* '9' */
-.icon-cube:before { content: '\63'; } /* 'c' */
+// (removed!) .icon-cube:before { content: '\63'; } /* 'c' */
 .icon-github:before { content: '\67'; } /* 'g' */
 // .icon-lock:before { content: '\6c'; } /* 'l' */
 .icon-twitter:before { content: '\74'; } /* 't' */
 // .icon-lock-open:before { content: '\75'; } /* 'u' */
+
+.icon-search:before { content: '\7a'; } /* 'z' */
+.icon-info:before { content: '\69'; } /* 'i' */
+
 
 
 // -----------------------
