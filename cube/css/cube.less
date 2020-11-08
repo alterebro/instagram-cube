@@ -339,12 +339,25 @@ header {
             font-family: 'icons';
             font-size: 85%;
             &:hover { background: var(--aux-color); }
-
         }
     }
 
     > p {
 
+        a {
+            em { display: none;}
+            display: inline-block;
+            height: 24px;
+            width: 24px;
+            background: #323232;
+            color: #fff;
+            display: grid;
+            place-items: center;
+            border-radius: 100%;
+            opacity: .5;
+            transition: opacity .15s linear;
+            &:hover { opacity: 1; }
+        }
     }
 }
 
