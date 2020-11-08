@@ -230,12 +230,28 @@ header {
 
     > h1 {
         font-size: 1.6rem;
-        strong { display: none; }
+        strong {
+            display: none;
+        }
+
         a {
             color: var(--bg-color);
             transition: color .35s linear;
+
+            &:hover {
+                color: var(--primary-color);
+            }
+            &:before {
+                content: '';
+                display: block;
+                height: 28px;
+                width: 28px;
+                background-image: url(../images/cube.svg);
+                background-size: 20px auto;
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
         }
-        a:hover { color: var(--primary-color); }
     }
 
     > form {
@@ -340,6 +356,7 @@ aside {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
     background: rgba(0, 0, 0, 0);
     display: grid;
     place-items: center;

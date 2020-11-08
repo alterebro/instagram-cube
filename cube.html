@@ -16,7 +16,7 @@
 <div id="app" v-cloak>
     <cube-head inline-template>
         <header>
-            <h1><a href="#" title="Instagram Cube"><i class="icon icon-cube"></i> <strong>InstaCube</strong></a></h1>
+            <h1><a href="#" title="Instagram Cube"><strong>Instagram Cube</strong></a></h1>
             <form @submit.prevent="requestFeed">
                 <select class="select-css" v-model="instagramQueryType">
                     <option v-for="(type, i) in instagramQueryTypes" :value="type">{{ type.type }}</option>
