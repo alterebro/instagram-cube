@@ -120,11 +120,11 @@ const Store = {
         let value = 'alterebro';
         let type = types[0];
 
-        if ( !!urlParams.get('username') ) {
+        if ( urlParams.has('username') ) {
 
             value = urlParams.get('username');
 
-        } else if ( !!urlParams.get('hashtag') ) {
+        } else if ( urlParams.has('hashtag') ) {
 
             value = urlParams.get('hashtag');
             type = types[1];
