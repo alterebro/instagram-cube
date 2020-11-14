@@ -91,6 +91,8 @@ const Store = {
                 if (_xhr.readyState === 4 && _xhr.status == "200" && _xhr.responseText != '') {
 
                     this.state.instagramFeed = JSON.parse(_xhr.responseText).slice(0,6);
+                    this.setUrlParams(query);
+
                     if ( init) { this.autoRotate() }
 
                 } else {
@@ -107,7 +109,38 @@ const Store = {
 
     toggleModalWindow : function(show) {
         this.state.modalWindowOpen = show;
+    },
+
+    // URL Query String
+    getUrlParams : function() {
+
+        let types = this.state.instagramQueryTypes;
+        let urlParams = new URLSearchParams( window.location.hash.split('#')[1] );
+
+        let value = 'alterebro';
+        let type = types[0];
+
+        if ( !!urlParams.get('username') ) {
+
+            value = urlParams.get('username');
+
+        } else if ( !!urlParams.get('hashtag') ) {
+
+            value = urlParams.get('hashtag');
+            type = types[1];
+        }
+
+        Store.state.instagramQuery = value;
+        Store.state.instagramQueryType = type;
+
+        return (((type.symbol == '@') ? '@' : '') + value);
+    },
+    setUrlParams : function(query) {
+
+        let _q = `${Store.state.instagramQueryType.type.toLowerCase()}=${Store.state.instagramQuery}`
+        window.location.hash = _q;
     }
+
 }
 
 // ----------
@@ -130,7 +163,7 @@ const CubeHead = {
         }
     },
     created() {
-        Store.state.instagramQueryType = Store.state.instagramQueryTypes[0];
+        // Store.state.instagramQueryType = Store.state.instagramQueryTypes[0];
     }
 }
 
@@ -200,6 +233,8 @@ const App = new Vue({
         Store.state.cubeSize = Math.floor(Math.min(w, h) / 2.5);
         Store.state.cubeSideCurrent = Store.state.cubeSides[0];
         Store.setCubeSize();
-        // Store.getInstagramFeed('@alterebro');
+
+        let q = Store.getUrlParams();
+        Store.getInstagramFeed( q );
     }
 });
