@@ -139,8 +139,12 @@ const Store = {
 
         let _q = `${Store.state.instagramQueryType.type.toLowerCase()}=${Store.state.instagramQuery}`
         window.location.hash = _q;
-    }
+    },
 
+    // Reload
+    refreshPage : function() {
+        window.location = window.location.pathname
+    }
 }
 
 // ----------
@@ -160,11 +164,12 @@ const CubeHead = {
         },
         showModalWindow() {
             Store.toggleModalWindow(true);
+        },
+        refreshPage() {
+            Store.refreshPage();
         }
     },
-    created() {
-        // Store.state.instagramQueryType = Store.state.instagramQueryTypes[0];
-    }
+    created() {}
 }
 
 const CubeInfo = {
