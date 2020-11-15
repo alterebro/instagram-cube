@@ -48,7 +48,6 @@ const Store = {
     // Methods
     changeSide : function(side, nonStop) {
         if ( !nonStop ) {
-            // console.log(this);
             this.state.cubeRotate = false;
             this.state.cubeRotateId = null;
         }
@@ -91,8 +90,15 @@ const Store = {
             _xhr.onreadystatechange = () => {
                 if (_xhr.readyState === 4 && _xhr.status == "200" && _xhr.responseText != '') {
 
-                    this.state.instagramFeed = JSON.parse(_xhr.responseText).slice(0,6);
                     this.setUrlParams(query);
+                    this.state.instagramFeed = JSON.parse(_xhr.responseText).slice(0,6);
+
+                    // Fix Array Size
+                    if (this.state.instagramFeed.length < 6 ) {
+                        for (let i = this.state.instagramFeed.length; i < 6; i++) {
+                            this.state.instagramFeed[i] = {};
+                        }
+                    }
 
                     if ( init) { this.autoRotate() }
 
