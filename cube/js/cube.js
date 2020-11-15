@@ -62,9 +62,10 @@ const Store = {
 
         // Shadow
         let s = Math.floor(Math.random()*4)/10 + 1;
-        let h = Math.floor(this.state.cubeSize/8);
+        let h = Math.floor(this.state.cubeSize/6); // 8
         let z = Math.floor(Math.random()*(h*1.5));
-        this.state.cubeShadow.transform = `translateY(${z*2}px) scale(${s})`;
+
+        this.state.cubeShadow.transform = `translateY(${z*2}px) scale(${s}) rotateX(45deg)`;
         this.state.cubeShadow.height = `${h}px`;
 
         // Main (cubeContainer)
