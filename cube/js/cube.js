@@ -29,7 +29,7 @@ const Store = {
         cubeRotationSwing : 25,
         cubeSize : 300,
 
-        modalWindowOpen : false,
+        modalWindowOpen : true,
 
         // Style Objects
         cubeRotation : {
