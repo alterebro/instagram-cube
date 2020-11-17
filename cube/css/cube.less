@@ -278,7 +278,7 @@ aside {
         background: var(--fg-color);
         color: var(--bg-color);
         padding: ~"calc( var(--spacing) * 1.5 ) calc( var(--spacing) * 2 ) calc( var(--spacing) * 1.75 ) calc( var(--spacing) * 2 )";
-        box-shadow: 0 1px 2px rgba(0, 0, 0, .75);
+        box-shadow: 0 5px 25px 5px rgba(0, 0, 0, .65);
         border-radius: var(--border-radius);
         opacity: 0;
         transition: opacity .15s ease-in-out;
@@ -287,10 +287,23 @@ aside {
         h2 {
             font-size: 1.8rem;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            &:before {
+                content: '';
+                display: inline-block;
+                height: 2rem;
+                width: 2rem;
+                background-image: url(../images/cube.svg);
+                background-size: 1.6rem auto;
+                background-position: left center;
+                background-repeat: no-repeat;
+                margin: 0 .5rem 0 0;
+            }
         }
-        p {
-            margin: 0 0 1rem;
-        }
+        p { margin: 0 0 1rem; }
         ul {
             li {
                 i {
@@ -317,6 +330,7 @@ aside {
             line-height: 2rem;
             color: var(--primary-color);
             cursor: pointer;
+            transition: color .25s ease-in-out;
 
             &:hover {
                 color: var(--bg-color);
@@ -325,7 +339,7 @@ aside {
     }
 
     &.active {
-        background: rgba(0, 0, 0, .5);
+        background: rgba(0, 0, 0, .35);
         pointer-events: auto;
 
         > .cube-modalWindow {
@@ -422,7 +436,6 @@ footer {
                 height: var(--form-el-size);
                 border: none;
                 background: #fff;
-                // box-shadow: 0 5px 15px -5px rgba(0, 0, 0, .25);
                 color: var(--primary-color);
                 transition: all .35s ease-in-out;
                 font-size: 85%;
