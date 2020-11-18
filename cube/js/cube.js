@@ -198,6 +198,11 @@ const Cube = {
 const CubeFoot = {
     data : function () { return Store.state },
     name : "CubeFoot",
+    filters: {
+        capitalizeFirstLetter(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1)
+        }
+    },
     methods : {
         changeSide(side) {
             Store.changeSide(side, false);

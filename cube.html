@@ -27,7 +27,7 @@
                 </label>
                 <input type="submit" title="Show!" value="z" title="&#8227;" />
             </form>
-            <p><a href="#info" @click.prevent="showModalWindow"><i class="icon icon-info"></i> <em>Info</em></a></p>
+            <p><a href="#info" @click.prevent="showModalWindow" title="About the Instagram Cube"><i class="icon icon-info"></i> <em>Info</em></a></p>
         </header>
     </cube-head>
 
@@ -37,8 +37,8 @@
                 <h2>Instagram Cube</h2>
                 <p>Your Instagram Feed... <em>in a Cube!</em></p>
                 <ul>
-                    <li><i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro"><strong>Jorge Moreno @alterebro</strong></a></li>
-                    <li><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-cube">/alterebro/instagram-cube</a></li>
+                    <li><i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro" target="_blank" title="Jorge Moreno. Front End Web Developer and UI Designer"><strong>Jorge Moreno @alterebro</strong></a></li>
+                    <li><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-cube" target="_blank" title="Github Code Repository">/alterebro/instagram-cube</a></li>
                 </ul>
                 <button type="button" @click="hideModalWindow" title="Close">&times;</button>
             </div>
@@ -58,7 +58,7 @@
     <cube-foot inline-template>
         <footer>
             <ul class="cube-sideselector" v-show="instagramFeed.length">
-                <li v-for="side in cubeSides" :class="[side.side, { active : (side.side == cubeSideCurrent.side) }]"><button @click="changeSide(side)" :title="side.side" v-html="side.label"></button></li>
+                <li v-for="side in cubeSides" :class="[side.side, { active : (side.side == cubeSideCurrent.side) }]"><button @click="changeSide(side)" :title="side.side | capitalizeFirstLetter" v-html="side.label"></button></li>
             </ul>
             <ul class="cube-action" v-show="instagramFeed.length">
                 <li v-if="cubeRotate"><button @click="stopRotation()" title="Pause Rotation">&#x30;</button></li>
