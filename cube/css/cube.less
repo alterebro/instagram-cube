@@ -37,6 +37,7 @@
     --cube-size: 400px;
     --fg-color: #f0f0f0;
     --bg-color: #323232;
+    --bg-color-rgb: 50, 50, 50;
     --primary-color: #0095f6;
     --aux-color: #0af;
     --form-el-size: 3rem;
@@ -125,12 +126,12 @@ a {
         margin-left: -50%;
         background-color: var(--bg-color);
         box-shadow:
-            inset 0 2px 5px 1px var(--bg-color),
+            inset 0 1px 5px 1px var(--bg-color),
             0 0 1px 1px var(--bg-color);
         background-image:
             radial-gradient(ellipse at top center, rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, 0) 15%),
-            linear-gradient(transparent, transparent 50%, var(--bg-color)),
-            linear-gradient(90deg, var(--bg-color), var(--bg-color) 30%, rgba(0, 0, 0, .15) 40%, rgba(0, 0, 0, .15) 60%, var(--bg-color) 70%, var(--bg-color)),
+            linear-gradient(~"rgba(var(--bg-color-rgb), 0)", ~"rgba(var(--bg-color-rgb), 0)" 15%, var(--bg-color) 60%),
+            linear-gradient(90deg, var(--bg-color), var(--bg-color) 30%, ~"rgba(var(--bg-color-rgb), .15)" 40%, ~"rgba(var(--bg-color-rgb), .15)" 60%, var(--bg-color) 70%, var(--bg-color)),
             linear-gradient(rgba(0, 0, 0, .25), var(--bg-color) 35%);
     }
 }
