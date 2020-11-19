@@ -82,8 +82,10 @@ const Store = {
     setCubeSize : function() {
         let _shortAxis = Math.min(window.innerWidth, window.innerHeight);
         let _maxLimit = Math.floor(_shortAxis/4)*3;
-
+        let _minLimit = 120;
         this.state.cubeSize = ( this.state.cubeSize > _maxLimit ) ? _maxLimit : this.state.cubeSize;
+        this.state.cubeSize = ( this.state.cubeSize < _minLimit ) ? _minLimit : this.state.cubeSize;
+
         document.documentElement.style.setProperty('--cube-size', `${this.state.cubeSize}px`);
     },
     getInstagramFeed : function(query, init = true) {
