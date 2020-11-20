@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no" />
-    <title>Instagram Cube</title>
+    <title>InstaCube</title>
     <meta name="description" content="Your Instagram feed in a cube!" />
     <meta name="author" content="Jorge Moreno aka moro, moro.es (@alterebro)" />
     <meta name="google" content="notranslate" />
@@ -11,20 +11,20 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@alterebro" />
     <meta name="twitter:creator" content="@alterebro" />
-    <meta name="twitter:title" content="Instagram Cube" />
+    <meta name="twitter:title" content="InstaCube" />
     <meta name="twitter:description" content="Your Instagram feed in a cube!" />
     <meta name="twitter:image" content=".cube/images/instagram-cube.jpg" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="moro.es" />
-    <meta property="og:title" content="Instagram Cube" />
+    <meta property="og:title" content="InstaCube" />
     <meta property="og:description" content="Your Instagram feed in a cube!" />
     <meta property="og:url" content="./" />
     <meta property="og:image" content=".cube/images/instagram-cube.jpg" />
 
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="application-name" content="Instagram Cube" />
-    <meta name="apple-mobile-web-app-title" content="Instagram Cube" />
+    <meta name="application-name" content="InstaCube" />
+    <meta name="apple-mobile-web-app-title" content="InstaCube" />
     <meta name="theme-color" content="#0095f6" />
     <meta name="msapplication-navbutton-color" content="#0095f6" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -39,7 +39,7 @@
 <div id="app" v-cloak>
     <cube-head inline-template>
         <header>
-            <h1><a href="./" title="Instagram Cube" @click.prevent="refreshPage"><strong>Instagram Cube</strong></a></h1>
+            <h1><a href="./" title="InstaCube" @click.prevent="refreshPage"><strong>InstaCube</strong></a></h1>
             <form @submit.prevent="requestFeed">
                 <select class="select-css" v-model="instagramQueryType">
                     <option v-for="(type, i) in instagramQueryTypes" :value="type">{{ type.type }}</option>
@@ -50,14 +50,14 @@
                 </label>
                 <input type="submit" title="Show!" value="z" title="&#8227;" />
             </form>
-            <p><a href="#info" @click.prevent="showModalWindow" title="About the Instagram Cube"><i class="icon icon-info"></i> <em>Info</em></a></p>
+            <p><a href="#info" @click.prevent="showModalWindow" title="About the InstaCube"><i class="icon icon-info"></i> <em>Info</em></a></p>
         </header>
     </cube-head>
 
     <cube-info inline-template>
         <aside id="info" :class="{ active : modalWindowOpen }" @click.self="hideModalWindow">
             <div class="cube-modalWindow">
-                <h2>Instagram Cube</h2>
+                <h2>InstaCube</h2>
                 <p>Your Instagram Feed... <em>in a Cube!</em></p>
                 <ul>
                     <li><i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro" target="_blank" title="Jorge Moreno. Front End Web Developer and UI Designer"><strong>Jorge Moreno @alterebro</strong></a></li>
