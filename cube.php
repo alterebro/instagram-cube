@@ -1,5 +1,7 @@
 <?php
 
+// index.php
+
 $cube = file_get_contents( "cube.html" );
 $cube = preg_replace('#<!--(.|\s)*?-->#', '', $cube);
 $cube = preg_replace('#(?ix)(?>[^\S ]\s*|\s{2,})(?=(?:(?:[^<]++|<(?!/?(?:textarea|pre)\b))*+)(?:<(?>textarea|pre)\b|\z))#', '', $cube);

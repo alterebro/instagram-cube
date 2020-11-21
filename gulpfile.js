@@ -18,7 +18,7 @@ function styles() {
         .pipe(less())
         .pipe(postcss(plugins))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(dest('tmp/css'));
+        .pipe(dest('cube/css'));
 }
 
 function scripts() {
@@ -28,32 +28,30 @@ function scripts() {
     }))
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(dest('tmp/js'));
-}
-
-function html() {
-    return src('cube.html')
-        .pipe(replace(/.\/node_modules\/vue\/dist\/vue.min.js/g, './js/vue.min.js'))
-        .pipe(replace(/.\/cube\/css\/cube.css/g, './css/cube.min.css'))
-        .pipe(replace(/.\/cube\/js\/cube.css/g, './js/cube.min.js'))
-        .pipe(htmlmin({
-            collapseWhitespace: true,
-            removeComments: true
-        }))
-        .pipe(rename({
-            basename: 'app',
-            extname: '.html'
-        }))
-        // .pipe(dest('./'));
-        .pipe(dest('tmp/'));
+    .pipe(dest('cube/js'));
 }
 
 function modules() {
     return src([
         'node_modules/vue/dist/vue.min.js'
     ])
-    .pipe(dest('tmp/js'));
+    .pipe(dest('cube/js'));
 }
 
+function html() {
+    return src('cube.html')
+        .pipe(replace(/.\/node_modules\/vue\/dist\/vue.min.js/g, './cube/js/vue.min.js'))
+        .pipe(replace(/.\/cube\/css\/cube.css/g, './cube/css/cube.min.css'))
+        .pipe(replace(/.\/cube\/js\/cube.css/g, './cube/js/cube.min.js'))
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true
+        }))
+        .pipe(rename({
+            basename: 'index',
+            extname: '.html'
+        }))
+        .pipe(dest('./'));
+}
 
 exports.create = parallel(styles, scripts, modules, html);
