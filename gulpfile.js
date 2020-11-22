@@ -42,7 +42,7 @@ function html() {
     return src('cube.html')
         .pipe(replace(/.\/node_modules\/vue\/dist\/vue.min.js/g, './cube/js/vue.min.js'))
         .pipe(replace(/.\/cube\/css\/cube.css/g, './cube/css/cube.min.css'))
-        .pipe(replace(/.\/cube\/js\/cube.css/g, './cube/js/cube.min.js'))
+        .pipe(replace(/.\/cube\/js\/cube.js/g, './cube/js/cube.min.js'))
         .pipe(htmlmin({
             collapseWhitespace: true,
             removeComments: true
