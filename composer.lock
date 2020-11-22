@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "alterebro/instagram-feed",
-            "version": "v0.1.3",
+            "version": "v0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/alterebro/instagram-feed.git",
-                "reference": "98f343a2c7f916f7f7620c0e494fb7f611feab79"
+                "reference": "dd5afd640f993fb79f4921eee0265249a0caf02b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alterebro/instagram-feed/zipball/98f343a2c7f916f7f7620c0e494fb7f611feab79",
-                "reference": "98f343a2c7f916f7f7620c0e494fb7f611feab79",
+                "url": "https://api.github.com/repos/alterebro/instagram-feed/zipball/dd5afd640f993fb79f4921eee0265249a0caf02b",
+                "reference": "dd5afd640f993fb79f4921eee0265249a0caf02b",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
                 "instagram",
                 "scraper"
             ],
-            "time": "2020-10-18T13:56:11+00:00"
+            "time": "2020-11-22T20:51:41+00:00"
         }
     ],
     "packages-dev": [],
