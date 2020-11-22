@@ -1,10 +1,2 @@
 AddType image/svg+xml svg svgz
 AddEncoding gzip svgz
-
-<IfModule mod_rewrite.c>
-Options +FollowSymLinks
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (.*) https://instacube.moro.es/ [R=301,L]
-</IfModule>
