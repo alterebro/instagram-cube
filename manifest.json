@@ -1,0 +1,18 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "InstaCube",
+    "short_name": "InstaCube",
+    "description" : "InstaCube. Your Instagram feed in a cube!",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "any",
+    "background_color": "#000000",
+    "theme_color": "#323232",
+    "url": "https://instacube.moro.es/",
+    "start_url": "https://instacube.moro.es/index.html?launcher=true",
+    "prefer_related_applications": false,
+    "related_applications": [],
+    "icons": [],
+    "screenshots": []
+}
