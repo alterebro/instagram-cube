@@ -6,6 +6,7 @@
 
 ---
 
+
 ### Install
 
 ```sh
@@ -13,18 +14,28 @@ $ composer install
 $ npm install
 ```
 
+
 ### Build
 
-```bash
+```sh
 $ gulp create
 ```
 
 This will create the following files :
-	
+
 	index.html
 	/cube/css/cube.min.css
-	/cube/js/cube.min.js
+	/cube/js/axios.min.js
 	/cube/js/vue.min.js
+	/cube/js/cube.min.js
+
+
+### Deploy
+
+```sh
+$ sh upload.sh test # dry-run flagged
+$ sh upload.sh sync # rsyncs local copy to server
+```
 
 ---
 
