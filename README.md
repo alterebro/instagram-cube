@@ -1,19 +1,19 @@
 # [InstaCube](https://instacube.moro.es) (instagram-cube)
 
 > Your Instagram feed in a cube!
+> https://instacube.moro.es
 
 ![InstaCube](cube/images/instagram-cube.jpg "InstaCube")
 
 ---
 
-
 ### Install
 
 ```sh
-$ composer install
+$ git clone https://github.com/alterebro/instagram-cube.git
+$ cd instagram-cube/
 $ npm install
 ```
-
 
 ### Build
 
@@ -24,11 +24,10 @@ $ gulp create
 This will create the following files :
 
 	index.html
-	/cube/css/cube.min.css
-	/cube/js/axios.min.js
-	/cube/js/vue.min.js
-	/cube/js/cube.min.js
-
+	├ /cube/css/cube.min.css
+	├ /cube/js/axios.min.js
+	├ /cube/js/vue.min.js
+	└ /cube/js/cube.min.js
 
 ### Deploy
 
