@@ -33,7 +33,8 @@ function scripts() {
 
 function modules() {
     return src([
-        'node_modules/vue/dist/vue.min.js'
+        'node_modules/vue/dist/vue.min.js',
+        'node_modules/axios/dist/axios.min.js'
     ])
     .pipe(dest('cube/js'));
 }
@@ -41,6 +42,7 @@ function modules() {
 function html() {
     return src('cube.html')
         .pipe(replace(/.\/node_modules\/vue\/dist\/vue.min.js/g, './cube/js/vue.min.js'))
+        .pipe(replace(/.\/node_modules\/axios\/dist\/axios.min.js/g, './cube/js/axios.min.js'))
         .pipe(replace(/.\/cube\/css\/cube.css/g, './cube/css/cube.min.css'))
         .pipe(replace(/.\/cube\/js\/cube.js/g, './cube/js/cube.min.js'))
         .pipe(htmlmin({
