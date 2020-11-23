@@ -32,6 +32,8 @@ This will create the following files :
 
 ### Deploy
 
+Open `upload-sample.sh`, set the variables to your own values, then rename it to `upload.sh` and give the file proper permissions (`chmod +x sync.sh`)
+
 ```sh
 $ sh upload.sh test # dry-run flagged
 $ sh upload.sh sync # rsyncs local copy to server
