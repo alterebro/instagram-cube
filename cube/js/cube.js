@@ -89,34 +89,93 @@ const Store = {
     },
     getInstagramFeed : function(query, init = true) {
 
-        let _xhr = new XMLHttpRequest();
-            _xhr.overrideMimeType('application/json');
-            _xhr.open('GET', `${Store.feedURL}?q=${query}`, true);
-            _xhr.onreadystatechange = () => {
-                if (_xhr.readyState === 4 && _xhr.status == "200" && _xhr.responseText != '') {
 
-                    this.setUrlParams(query);
-                    this.state.instagramFeed = JSON.parse(_xhr.responseText).slice(0,6);
+        let _types = this.state.instagramQueryTypes;
+        let _baseURL = 'https://www.instagram.com/';
 
-                    // Fix Array Size
-                    if (this.state.instagramFeed.length < 6 ) {
-                        for (let i = this.state.instagramFeed.length; i < 6; i++) {
-                            this.state.instagramFeed[i] = {};
-                        }
-                    }
+        // Defaults to hashtag
+        let _value = query;
+        let _type = _types[1].symbol;
+        let _url = _baseURL + 'explore/tags/' + query + '/';
 
-                    if ( init) { this.autoRotate() }
+        // It's an username
+        if ( query.charAt(0) === '@' ) {
+            _value = _value.substring(1);
+            _type = _types[0].symbol;
+            _url = _baseURL + _value + '/';
+        }
 
-                } else {
+        let instagramRegex = new RegExp(/<script type="text\/javascript">window\._sharedData = (.*);<\/script>/);
+        let feed = [];
 
-                    this.state.instagramFeed = [];
-                }
-            }
+        axios.get(_url)
+             .then(function (response) {
+                // Handle Success
+                let _json = JSON.parse(response.data.match(instagramRegex)[1]);
+                let _els = (_type == '@')
+                    ? _json.entry_data.ProfilePage[0].graphql.user.edge_owner_to_timeline_media.edges
+                    : _json.entry_data.TagPage[0].graphql.hashtag.edge_hashtag_to_media.edges;
 
-            _xhr.onload = function(l) { };
-            _xhr.onerror = function(e) { };
+                _els.forEach((el, i) => {
+                    let _el = el.node;
+                    feed.push({
+                        'image' : _el.display_url,
+                        'link' : _baseURL + 'p/' + _el.shortcode + '/',
+                        'timestamp' : _el.taken_at_timestamp,
+                        'thumb' : _el.thumbnail_resources[(_el['thumbnail_resources'].length)-1].src,
+                        'caption' : ( !!_el.edge_media_to_caption.edges[0].node.text ) ? _el.edge_media_to_caption.edges[0].node.text : '',
+                        'alt' : ( !!_el.accessibility_caption ) ? _el.accessibility_caption : ''
+                    });
+                });
 
-        _xhr.send(null);
+                // Fix Array Size
+                if (feed.length < 6 ) { for (let i = feed.length; i < 6; i++) { feed[i] = {}; } }
+
+                Store.setUrlParams(query);
+                Store.state.instagramFeed = feed.splice(0, 6);
+
+                if ( init ) { Store.autoRotate() }
+
+                console.log(feed);
+            })
+             .catch(function (error) {
+                // Handle Error
+                console.log(error);
+            })
+             .then(function () {
+                // Execute always...
+                console.log(_value, _type, _url);
+            });
+
+
+        // let _xhr = new XMLHttpRequest();
+        //     _xhr.overrideMimeType('application/json');
+        //     _xhr.open('GET', `${Store.feedURL}?q=${query}`, true);
+        //     _xhr.onreadystatechange = () => {
+        //         if (_xhr.readyState === 4 && _xhr.status == "200" && _xhr.responseText != '') {
+        //
+        //             this.setUrlParams(query);
+        //             this.state.instagramFeed = JSON.parse(_xhr.responseText).slice(0,6);
+        //
+        //             // Fix Array Size
+        //             if (this.state.instagramFeed.length < 6 ) {
+        //                 for (let i = this.state.instagramFeed.length; i < 6; i++) {
+        //                     this.state.instagramFeed[i] = {};
+        //                 }
+        //             }
+        //
+        //             if ( init) { this.autoRotate() }
+        //
+        //         } else {
+        //
+        //             this.state.instagramFeed = [];
+        //         }
+        //     }
+        //
+        //     _xhr.onload = function(l) { };
+        //     _xhr.onerror = function(e) { };
+        //
+        // _xhr.send(null);
     },
 
     toggleModalWindow : function(show) {
