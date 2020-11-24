@@ -7,11 +7,22 @@
     "scope": "/",
     "display": "standalone",
     "orientation": "any",
-    "background_color": "#000000",
     "theme_color": "#323232",
+    "background_color": "#323232",
     "start_url": "/?source=pwa",
     "prefer_related_applications": false,
     "related_applications": [],
-    "icons": [],
+    "icons": [
+        {
+            "src": "./images/icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./images/icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
     "screenshots": []
 }

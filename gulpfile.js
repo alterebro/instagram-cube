@@ -52,6 +52,7 @@ function copy_root_files() {
     return src([
         '.htaccess',
         'manifest.json',
+        'browserconfig.xml',
         'favicon.ico'
     ])
     .pipe(dest('build/'));
