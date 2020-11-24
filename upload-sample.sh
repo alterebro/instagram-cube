@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SOURCE="/Users/me/Desktop/source/" # "./"
+SOURCE="./build/" # "/Users/me/Desktop/source/"
 TARGET="/Users/me/Desktop/target/"
 USER="username"
 SERVER="server.ext"
@@ -20,15 +20,7 @@ args=(
  -arvz
  --progress
  --delete
- --include='.htaccess'
- --include='index.html'
- --include='manifest.json'
- --include='cube/'
- --include='cube/*/'
- --include='cube/*/*.min.*'
- --include='cube/images/***'
- --include='cube/fonts/icons.*'
- --exclude='*'
+ --exclude='.DS_Store'
 )
 
 if [ $1 ]

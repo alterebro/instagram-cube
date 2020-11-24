@@ -3,7 +3,7 @@
 > Your Instagram feed in a cube!
 > https://instacube.moro.es
 
-![InstaCube](cube/images/instagram-cube.jpg "InstaCube")
+[![InstaCube](cube/images/instagram-cube.jpg "InstaCube")](https://instacube.moro.es)
 
 ---
 
@@ -18,16 +18,9 @@ $ npm install
 ### Build
 
 ```sh
-$ gulp create
+$ gulp build
 ```
-
-This will create the following files :
-
-	index.html
-	├ /cube/css/cube.min.css
-	├ /cube/js/axios.min.js
-	├ /cube/js/vue.min.js
-	└ /cube/js/cube.min.js
+This will create the `build` folder which is the one to upload
 
 ### Deploy
 
