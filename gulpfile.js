@@ -51,7 +51,8 @@ function copy_files() {
 function copy_root_files() {
     return src([
         '.htaccess',
-        'manifest.json'
+        'manifest.json',
+        'favicon.ico'
     ])
     .pipe(dest('build/'));
 }
