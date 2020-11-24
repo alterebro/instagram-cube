@@ -10,8 +10,7 @@
     "theme_color": "#323232",
     "background_color": "#323232",
     "start_url": "/?source=pwa",
-    "prefer_related_applications": false,
-    "related_applications": [],
+    "categories": ["entertainment", "photo", "social"],
     "icons": [
         {
             "src": "./images/icons/android-chrome-192x192.png",
@@ -22,7 +21,25 @@
             "src": "./images/icons/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "purpose": "maskable",
+            "src": "./images/icons/maskable-icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "purpose": "maskable",
+            "src": "./images/icons/maskable-icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
         }
     ],
-    "screenshots": []
+    "screenshots" : [
+        {
+            "src": "./images/instagram-cube.jpg",
+            "sizes": "1280x640",
+            "type": "image/jpeg"
+        }
+    ]
 }
