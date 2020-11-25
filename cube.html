@@ -78,9 +78,15 @@
             <div class="cube-modalWindow">
                 <h2>InstaCube</h2>
                 <p>Your Instagram Feed... <em>in a Cube!</em></p>
-                <ul>
+                <ul class="credits">
                     <li><i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro" target="_blank" title="Jorge Moreno. Front End Web Developer and UI Designer"><strong>Jorge Moreno @alterebro</strong></a></li>
                     <li><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-cube" target="_blank" title="Github Code Repository">/alterebro/instagram-cube</a></li>
+                </ul>
+                <h3>Share it!</h3>
+                <ul class="share-list">
+                    <li v-for="network in socialNetworks" :class="network.network | networkClass">
+                        <a :href="network.url | networkURL" :title="network.network | networkTitle" @click="networkOpen($event)" :target="network.modal ? '_blank' : false" :rel="network.modal ? 'noopener noreferrer' : false">{{ network.network }}</a>
+                    </li>
                 </ul>
                 <button type="button" @click="hideModalWindow" title="Close">&times;</button>
             </div>

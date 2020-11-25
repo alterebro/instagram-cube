@@ -50,7 +50,7 @@
 
 // -----------------------
 // Global Style Reset
-html, body, ul, li, p, h1, h2, form, button {
+html, body, ul, li, p, h1, h2, h3, form, button {
     .unspaced();
 }
 li { list-style: none }
@@ -281,7 +281,7 @@ aside {
         background: var(--fg-color);
         color: var(--bg-color);
         padding: ~"calc( var(--spacing) * 1.5 ) calc( var(--spacing) * 2 ) calc( var(--spacing) * 1.75 ) calc( var(--spacing) * 2 )";
-        box-shadow: 0 5px 25px 5px rgba(0, 0, 0, .65);
+        box-shadow: 0 5px 25px 5px rgba(0, 0, 0, .75);
         border-radius: var(--border-radius);
         opacity: 0;
         transition: opacity .15s ease-in-out;
@@ -306,15 +306,30 @@ aside {
                 margin: 0 .5rem 0 0;
             }
         }
-        p { margin: 0 0 1rem; }
-        ul {
-            li {
-                i {
-                    display: inline-block;
-                    min-width: 1.6rem;
-                }
+        p { margin: 0 0 .5rem; }
+
+        ul.credits {
+            margin: 0 0 1rem 0;
+            padding: 0 1rem 0 0;
+
+            li i {
+                display: inline-block;
+                min-width: 1.6rem;
             }
         }
+
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0 0 .5rem;
+        }
+        ul.share-list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
         button[type="button"] {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -342,7 +357,7 @@ aside {
     }
 
     &.active {
-        background: rgba(0, 0, 0, .35);
+        background: rgba(0, 0, 0, .4);
         pointer-events: auto;
 
         > .cube-modalWindow {
@@ -610,5 +625,12 @@ i.icon {
         right: var(--spacing-mobile);
         width: ~"calc( (var(--form-el-size-mobile) * 3) + (var(--form-el-spacing) * 2) )";
         height: ~"calc( (var(--form-el-size-mobile) * 4) + (var(--form-el-spacing) * 3) )";
+    }
+
+    aside {
+        > .cube-modalWindow {
+            padding: ~"calc( var(--spacing) * 1.25 ) calc( var(--spacing) * 1.5 ) calc( var(--spacing) * 1.5 ) calc( var(--spacing) * 1.5 )";
+            box-shadow: 0 5px 25px 5px rgba(0, 0, 0, .65);
+        }
     }
 }

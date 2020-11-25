@@ -41,7 +41,16 @@ const Store = {
         },
         cubeContainer : {
             marginTop: '0px'
-        }
+        },
+
+        // Sharing
+        socialNetworks : [
+            { modal : true, network : "Twitter", url : "https://twitter.com/intent/tweet?text={TEXT}&url={URL}&via=alterebro" },
+            { modal : true, network : "FaceBook", url : "https://www.facebook.com/sharer.php?u={URL}" },
+            { modal : true, network : "LinkedIn", url : "https://www.linkedin.com/shareArticle?mini=true&url={URL}&title={TITLE}&summary={TEXT}&source=moro.es" },
+            { modal : false, network : "E-Mail", url : "mailto:?subject={TITLE}&body={TEXT}:%0A{URL}" },
+            { modal : true, network : "Telegram", url : "https://telegram.me/share/url?url={URL}&amp;text={TEXT} "}
+        ]
     },
 
     // -------
@@ -212,6 +221,15 @@ const Store = {
         window.location.hash = _q;
     },
 
+    networkOpen : function(e) {
+        let _el = e.currentTarget;
+        if (_el.getAttribute('target') == '_blank') {
+            let w = window.open(_el.href, 'share', 'width=550,height=440');
+                w.focus()
+            e.preventDefault();
+        }
+    },
+
     // Reload
     refreshPage : function() {
         window.location = window.location.pathname
@@ -246,9 +264,26 @@ const CubeHead = {
 const CubeInfo = {
     data : function() { return Store.state },
     name : "CubeInfo",
+    filters : {
+        networkClass(str) {
+            return str.toLowerCase().replace('-', '');
+        },
+        networkURL(url) {
+            let _url = encodeURIComponent(window.location.href);
+            let _title = encodeURIComponent(document.querySelector('head title').innerText);
+            let _desc = encodeURIComponent(document.querySelector('head meta[name="description"]').getAttribute('content'));
+            return url.replace('{TITLE}', _title).replace('{TEXT}', _desc).replace('{URL}', _url);
+        },
+        networkTitle(str) {
+            return `Share it via ${str}!`;
+        }
+    },
     methods : {
         hideModalWindow() {
             Store.toggleModalWindow(false);
+        },
+        networkOpen(event) {
+            Store.networkOpen(event);
         }
     },
     created() {}
