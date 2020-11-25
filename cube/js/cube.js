@@ -29,7 +29,7 @@ const Store = {
         cubeRotationSwing : 25,
         cubeSize : 300,
 
-        modalWindowOpen : true,
+        modalWindowOpen : false,
 
         // Style Objects
         cubeRotation : {
@@ -145,7 +145,6 @@ const Store = {
 
                 if ( init ) { Store.autoRotate() }
 
-                console.log(feed);
             })
              .catch(function (error) {
                 // Handle Error
@@ -153,38 +152,8 @@ const Store = {
             })
              .then(function () {
                 // Execute always...
-                console.log(_value, _type, _url);
+                // console.log(_value, _type, _url);
             });
-
-
-        // let _xhr = new XMLHttpRequest();
-        //     _xhr.overrideMimeType('application/json');
-        //     _xhr.open('GET', `${Store.feedURL}?q=${query}`, true);
-        //     _xhr.onreadystatechange = () => {
-        //         if (_xhr.readyState === 4 && _xhr.status == "200" && _xhr.responseText != '') {
-        //
-        //             this.setUrlParams(query);
-        //             this.state.instagramFeed = JSON.parse(_xhr.responseText).slice(0,6);
-        //
-        //             // Fix Array Size
-        //             if (this.state.instagramFeed.length < 6 ) {
-        //                 for (let i = this.state.instagramFeed.length; i < 6; i++) {
-        //                     this.state.instagramFeed[i] = {};
-        //                 }
-        //             }
-        //
-        //             if ( init) { this.autoRotate() }
-        //
-        //         } else {
-        //
-        //             this.state.instagramFeed = [];
-        //         }
-        //     }
-        //
-        //     _xhr.onload = function(l) { };
-        //     _xhr.onerror = function(e) { };
-        //
-        // _xhr.send(null);
     },
 
     toggleModalWindow : function(show) {

@@ -185,6 +185,7 @@ header {
             height: 3rem;
             margin: 0;
             padding: 0;
+            border-radius: 0;
             border: solid #d0d0d0 1px;
             background-color: #fff;
             color: #777;
@@ -250,7 +251,7 @@ header {
             width: 2.4rem;
             line-height: 2.6rem;
             background: var(--bg-color);
-            color: var(--fg-color);
+            color: #fff;
             display: grid;
             place-items: center;
             border-radius: 100%;
@@ -367,19 +368,17 @@ aside {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-
             position: absolute;
-            top: ~"calc( var(--spacing) * 1.5 )";
-            right: ~"calc( var(--spacing) * 1.25 )";
-
+            top: var(--spacing);
+            right: var(--spacing);
             background: transparent;
             border: none;
             margin: 0;
             padding: 0;
             font-size: 200%;
-            height: 2rem;
-            width: 2rem;
-            line-height: 2rem;
+            width: var(--form-el-size);
+            height: var(--form-el-size);
+            line-height: var(--form-el-size);
             color: var(--primary-color);
             cursor: pointer;
             transition: color .25s ease-in-out;

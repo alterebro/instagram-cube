@@ -41,6 +41,8 @@
         "image": "https://instacube.moro.es/images/instagram-cube.jpg",
     }
     </script>
+    <link rel="preconnect" href="https://scontent-mad1-1.cdninstagram.com" />
+    <link rel="preconnect" href="https://www.instagram.com" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="./images/icons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicon-32x32.png" />
@@ -79,8 +81,8 @@
                 <h2>InstaCube</h2>
                 <p>Your Instagram Feed... <em>in a Cube!</em></p>
                 <ul class="credits">
-                    <li><i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro" target="_blank" title="Jorge Moreno. Front End Web Developer and UI Designer"><strong>Jorge Moreno @alterebro</strong></a></li>
-                    <li><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-cube" target="_blank" title="Github Code Repository">/alterebro/instagram-cube</a></li>
+                    <li><i class="icon icon-twitter"></i> <span>Created by:</span> <a href="https://twitter.com/alterebro" target="_blank" rel="noreferrer" title="Jorge Moreno. Front End Web Developer and UI Designer"><strong>Jorge Moreno @alterebro</strong></a></li>
+                    <li><i class="icon icon-github"></i> <span>GitHub Repo:</span> <a href="https://github.com/alterebro/instagram-cube" target="_blank" rel="noreferrer" title="Github Code Repository">/alterebro/instagram-cube</a></li>
                 </ul>
                 <h3>Share it!</h3>
                 <ul class="share-list">
@@ -97,12 +99,13 @@
         <main :style="cubeContainer" v-show="instagramFeed.length">
             <div class="cube" :style="cubeRotation">
                 <div v-for="item in instagramFeed">
-                    <a :href="item.link" target="_blank"><img :src="item.thumb" :alt="item.alt" /></a>
+                    <a :href="item.link" target="_blank" rel="noreferrer"><img :src="item.thumb" :alt="item.alt" /></a>
                 </div>
             </div>
             <div class="cube-shadow" :style="cubeShadow"></div>
         </main>
     </cube>
+
     <cube-foot inline-template>
         <footer>
             <ul class="cube-sideselector" v-show="instagramFeed.length">
