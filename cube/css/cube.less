@@ -310,7 +310,6 @@ aside {
 
         ul.credits {
             margin: 0 0 1rem 0;
-            padding: 0 1rem 0 0;
 
             li i {
                 display: inline-block;
@@ -326,8 +325,42 @@ aside {
         ul.share-list {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            width: 100%;
+
+            li {
+                a {
+                    background: var(--primary-color);
+                    width: var(--form-el-size);
+                    height: var(--form-el-size);
+                    display: block;
+                    color: var(--fg-color);
+                    overflow: hidden;
+                    border-radius: var(--border-radius);
+                    margin: 0 .5rem 0 0;
+                    border: solid #0085e6 1px;
+                    transition: all .25s ease-in-out;
+
+                    &:before {
+                        display: block;
+                        width: 100%;
+                        height: var(--form-el-size);
+                        line-height: var(--form-el-size);
+                        text-align: center;
+                        font-family: 'icons';
+                        content: '';
+                    }
+
+                    &:hover {
+                        background: var(--bg-color);
+                        border: solid var(--bg-color) 1px;
+                    }
+                }
+            }
+
+            li.twitter a:before { content: '\74'; }
+            li.facebook a:before { content: '\66'; }
+            li.linkedin a:before { content: '\6B'; }
+            li.email a:before { content: '\65'; }
+            li.telegram a:before { content: '\6D'; }
         }
 
         button[type="button"] {
@@ -336,9 +369,10 @@ aside {
             appearance: none;
 
             position: absolute;
-            top: var(--spacing);
-            right: var(--spacing);
+            top: ~"calc( var(--spacing) * 1.5 )";
+            right: ~"calc( var(--spacing) * 1.25 )";
 
+            background: transparent;
             border: none;
             margin: 0;
             padding: 0;
