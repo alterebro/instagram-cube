@@ -30,6 +30,7 @@ const Store = {
         cubeSize : 300,
 
         modalWindowOpen : false,
+        isLoading : false,
 
         // Style Objects
         cubeRotation : {
@@ -98,6 +99,8 @@ const Store = {
     },
     getInstagramFeed : function(query, init = true) {
 
+        Store.state.isLoading = true;
+
         let _types = this.state.instagramQueryTypes;
         let _baseURL = 'https://www.instagram.com/';
 
@@ -148,12 +151,19 @@ const Store = {
             })
              .catch(function (error) {
                 // Handle Error
-                // TODO : render error
-                console.log(error);
+                window.setTimeout(function() {
+                    // Fill empty just in case...
+                    let feed = [];
+                    for (let i = 0; i < 6; i++) { feed[i] = {}; }
+                    Store.state.instagramFeed = feed;
+                    if ( init ) { Store.autoRotate() }
+
+                    window.alert("Sorry something went wrong\nPlease try again later :(\nError: " + error.message);
+                }, 350);
             })
              .then(function () {
-                // Execute always...
-                // console.log(_value, _type, _url);
+                // Execute always at the end
+                window.setTimeout(function() { Store.state.isLoading = false; }, 500);
             });
     },
 
@@ -320,6 +330,10 @@ const CubeFoot = {
     }
 }
 
+const CubeLoader = {
+    data : function () { return Store.state },
+    name : "CubeLoader"
+}
 
 // ----------
 // Main App
@@ -329,7 +343,8 @@ const App = new Vue({
         CubeHead,
         CubeInfo,
         Cube,
-        CubeFoot
+        CubeFoot,
+        CubeLoader
     },
     created : function() {
         let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);

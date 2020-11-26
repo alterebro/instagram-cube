@@ -513,6 +513,70 @@ footer {
 }
 
 // -------------
+// #app > section
+section {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    z-index: 1;
+    background: var(--bg-color);
+    display: grid;
+    place-items: center;
+    overflow: auto;
+    transition: height .25s ease-in-out;
+
+    > figure {
+        border-radius: 100%;
+        padding: 2.2rem;
+        position: relative;
+
+        .cube-loader {
+            margin: 0 auto;
+            height: 3.2rem;
+            width: 3.2rem;
+            background-image: url(../images/cube.svg);
+            background-size: contain;
+        }
+        figcaption { display: none; }
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            border: solid rgba(255, 255, 255, .25) 2px;
+            transform: rotate(0deg);
+            animation: none;
+        }
+    }
+
+    &.active {
+        height: 100%;
+
+        > figure {
+            &:after {
+                border-top: solid rgba(255, 255, 255, 1) 2px;
+                border-left: solid rgba(255, 255, 255, .65) 2px;
+                border-bottom: solid rgba(255, 255, 255, .35) 2px;
+                border-right: solid rgba(255, 255, 255, .1) 2px;
+                animation: .5s infinite linear loading;
+            }
+        }
+    }
+}
+@keyframes loading {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+// -------------
 // -------------
 
 

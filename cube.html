@@ -125,6 +125,15 @@
             </ul>
         </footer>
     </cube-foot>
+
+    <cube-loader inline-template>
+        <section :class="{ active : isLoading }">
+            <figure>
+                <div class="cube-loader"></div>
+                <figcaption>Loading...</figcaption>
+            </figure>
+        </section>
+    </cube-loader>
 </div>
 
 <script charset="utf-8" src="./node_modules/axios/dist/axios.min.js"></script>
