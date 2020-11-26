@@ -70,7 +70,8 @@ function html() {
         .pipe(replace(/.\/cube\/css\/cube.css/g, './css/cube.min.css'))
         .pipe(htmlmin({
             collapseWhitespace: true,
-            removeComments: true
+            removeComments: true,
+            processScripts: ['application/ld+json']
         }))
         .pipe(rename({
             basename: 'index',
