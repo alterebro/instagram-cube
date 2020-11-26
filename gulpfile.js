@@ -23,7 +23,10 @@ function styles() {
 }
 
 function scripts() {
-    return src('cube/js/cube.js')
+    return src([
+        'cube/js/cube.js',
+        'cube/js/gtag.js'
+    ])
     .pipe(babel({
         presets: ['@babel/preset-env']
     }))
@@ -62,6 +65,7 @@ function html() {
     return src('cube.html')
         .pipe(replace(/.\/node_modules\/vue\/dist\/vue.min.js/g, './js/vue.min.js'))
         .pipe(replace(/.\/node_modules\/axios\/dist\/axios.min.js/g, './js/axios.min.js'))
+        .pipe(replace(/.\/cube\/js\/gtag.js/g, './js/gtag.min.js'))
         .pipe(replace(/.\/cube\/js\/cube.js/g, './js/cube.min.js'))
         .pipe(replace(/.\/cube\/css\/cube.css/g, './css/cube.min.css'))
         .pipe(htmlmin({
