@@ -323,6 +323,14 @@ aside {
                 display: inline-block;
                 min-width: 1.6rem;
             }
+            a {
+                border-bottom: solid transparent 1px;
+                transition: all .25s ease-in-out;
+            }
+            a:hover {
+                color: var(--bg-color);
+                border-bottom: solid var(--primary-color) 1px;
+            }
         }
 
         h3 {
