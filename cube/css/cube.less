@@ -240,6 +240,13 @@ header {
             border-bottom-right-radius: var(--border-radius);
             font-family: 'icons';
             font-size: 85%;
+            cursor: pointer;
+            transition: background .25s ease-in-out, border .25s ease-in-out;
+
+            &:hover {
+                background: var(--bg-color);
+                border: solid #000 1px;
+            }
         }
     }
 

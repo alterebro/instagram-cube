@@ -98,7 +98,6 @@ const Store = {
     },
     getInstagramFeed : function(query, init = true) {
 
-
         let _types = this.state.instagramQueryTypes;
         let _baseURL = 'https://www.instagram.com/';
 
@@ -120,6 +119,7 @@ const Store = {
         axios.get(_url)
              .then(function (response) {
                 // Handle Success
+                // TODO : render error if below goes wrong
                 let _json = JSON.parse(response.data.match(instagramRegex)[1]);
                 let _els = (_type == '@')
                     ? _json.entry_data.ProfilePage[0].graphql.user.edge_owner_to_timeline_media.edges
@@ -148,6 +148,7 @@ const Store = {
             })
              .catch(function (error) {
                 // Handle Error
+                // TODO : render error
                 console.log(error);
             })
              .then(function () {
@@ -165,6 +166,7 @@ const Store = {
 
         let types = this.state.instagramQueryTypes;
         let urlParams = new URLSearchParams( window.location.hash.split('#')[1] );
+        let localData = localStorage.getItem('instacube-query');
 
         let value = 'alterebro';
         let type = types[0];
@@ -177,7 +179,15 @@ const Store = {
 
             value = urlParams.get('hashtag');
             type = types[1];
+
+        } else if ( !!localData ){
+
+            localData = JSON.parse(localData);
+            type = (localData.key == 'hashtag') ? types[1] : types[0];
+            value = localData.value;
         }
+
+        // TODO : Check value and type are alright or deliver defaults
 
         Store.state.instagramQuery = value;
         Store.state.instagramQueryType = type;
@@ -186,8 +196,16 @@ const Store = {
     },
     setUrlParams : function(query) {
 
-        let _q = `${Store.state.instagramQueryType.type.toLowerCase()}=${Store.state.instagramQuery}`
+        let _key = Store.state.instagramQueryType.type.toLowerCase();
+        let _value = Store.state.instagramQuery;
+        let _q = `${_key}=${_value}`;
         window.location.hash = _q;
+
+        let _query = {
+            key : _key,
+            value : _value
+        }
+        localStorage.setItem('instacube-query', JSON.stringify(_query));
     },
 
     networkOpen : function(e) {
