@@ -1,3 +1,6 @@
+if ( window.location.hostname === "localhost" ) {
+    window['ga-disable-G-22DMFKLBKF'] = true;
+}
 window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('js', new Date());
