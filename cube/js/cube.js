@@ -219,6 +219,7 @@ const Store = {
 
     // Reload
     refreshPage : function() {
+        localStorage.removeItem('instacube-query');
         window.location = window.location.pathname
     }
 }
