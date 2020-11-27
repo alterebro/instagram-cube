@@ -682,7 +682,18 @@ i.icon {
     .full-size();
     display: grid;
     place-items: center;
-    p { padding: var(--spacing); }
+    padding: var(--spacing);
+    p {
+        padding: var(--spacing);
+        border-radius: var(--border-radius);
+        border: solid rgba(255, 255, 255, .1) 1px;
+        box-shadow: 0 10px 10px -5px rgba(0, 0, 0, .25);
+    }
+    strong { font-size: 120%; }
+    em {
+        font-style: normal;
+        color: rgba(255, 255, 255, .65);
+    }
 }
 
 // -----------------------
