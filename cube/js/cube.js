@@ -147,21 +147,23 @@ const Store = {
                 Store.state.instagramFeed = feed.splice(0, 6);
 
                 if ( init ) { Store.autoRotate() }
-
             })
              .catch(function (error) {
                 // Handle Error
                 window.setTimeout(function() {
+
                     // Fill empty just in case...
                     let feed = [];
                     for (let i = 0; i < 6; i++) { feed[i] = {}; }
                     Store.state.instagramFeed = feed;
                     if ( init ) { Store.autoRotate() }
 
-                    window.alert("Sorry something went wrong\nPlease try again later :(\nError: " + error.message);
+                    window.alert("Sorry something went wrong :(\nPlease try again later...\n - Error: " + error.message);
+
                 }, 350);
             })
              .then(function () {
+
                 // Execute always at the end
                 window.setTimeout(function() { Store.state.isLoading = false; }, 500);
             });
@@ -198,7 +200,6 @@ const Store = {
         }
 
         // TODO : Check value and type are alright or deliver defaults
-
         Store.state.instagramQuery = value;
         Store.state.instagramQueryType = type;
 
