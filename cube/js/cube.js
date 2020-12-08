@@ -129,15 +129,21 @@ const Store = {
                     : _json.entry_data.TagPage[0].graphql.hashtag.edge_hashtag_to_media.edges;
 
                 _els.forEach((el, i) => {
-                    let _el = el.node;
-                    feed.push({
-                        'image' : _el.display_url,
-                        'link' : _baseURL + 'p/' + _el.shortcode + '/',
-                        'timestamp' : _el.taken_at_timestamp,
-                        'thumb' : _el.thumbnail_resources[(_el['thumbnail_resources'].length)-1].src,
-                        'caption' : ( !!_el.edge_media_to_caption.edges[0].node.text ) ? _el.edge_media_to_caption.edges[0].node.text : '',
-                        'alt' : ( !!_el.accessibility_caption ) ? _el.accessibility_caption : ''
-                    });
+
+                    if (i < 10) {
+
+                        let _el = el.node;
+                        let _obj = {
+                            'image' : _el.display_url,
+                            'link' : _baseURL + 'p/' + _el.shortcode + '/',
+                            'timestamp' : _el.taken_at_timestamp,
+                            'thumb' : _el.thumbnail_resources[(_el['thumbnail_resources'].length)-1].src,
+                            'caption' : ( !!_el.edge_media_to_caption.edges[0].node.text ) ? _el.edge_media_to_caption.edges[0].node.text : '',
+                            'alt' : ( !!_el.accessibility_caption ) ? _el.accessibility_caption : ''
+                        };
+
+                        feed.push( _obj );
+                    }
                 });
 
                 // Fix Array Size
