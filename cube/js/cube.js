@@ -177,7 +177,7 @@ const Store = {
     },
 
     toggleModalWindow : function(show) {
-        this.state.modalWindowOpen = show;
+        Store.state.modalWindowOpen = show;
     },
 
     // URL Query String
