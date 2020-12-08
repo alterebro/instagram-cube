@@ -19,6 +19,7 @@ $ npm install
 
 ```sh
 $ gulp build
+# or: $ npm run build
 ```
 This will create the `build` folder which is the one to upload
 
@@ -29,6 +30,10 @@ Open `upload-sample.sh`, set the variables to your own values, then rename it to
 ```sh
 $ sh upload.sh test # dry-run flagged
 $ sh upload.sh sync # rsyncs local copy to server
+
+# equivalent to:
+$ npm run deploy:test
+$ npm run deploy:sync
 ```
 
 ---

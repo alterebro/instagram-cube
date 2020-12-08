@@ -4,7 +4,9 @@
   "description": "InstaCube. Your Instagram Feed in a Cube!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+      "build": "gulp build",
+      "deploy:test": "sh upload.sh test",
+      "deploy:sync": "sh upload.sh sync"
   },
   "repository": {
     "type": "git",
