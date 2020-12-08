@@ -31,6 +31,7 @@ const Store = {
 
         modalWindowOpen : false,
         isLoading : false,
+        currentURL : window.location.href,
 
         // Style Objects
         cubeRotation : {
@@ -223,6 +224,7 @@ const Store = {
             value : _value
         }
         localStorage.setItem('instacube-query', JSON.stringify(_query));
+        Store.state.currentURL = window.location.href;
     },
 
     networkOpen : function(e) {
@@ -289,7 +291,8 @@ const CubeInfo = {
         },
         networkOpen(event) {
             Store.networkOpen(event);
-        }
+        },
+        focusize(e) { e.target.select(); }
     },
     created() {}
 }

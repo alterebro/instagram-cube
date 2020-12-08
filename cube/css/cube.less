@@ -88,6 +88,25 @@ a {
     color: var(--primary-color);
     text-decoration: none;
 }
+input, select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    line-height: 3rem;
+    height: 3rem;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    border: solid #d0d0d0 1px;
+    background-color: #fff;
+    color: #777;
+    font: inherit;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .075);
+
+    &:focus {
+        outline: none;
+    }
+}
 
 // -----------------------
 // App
@@ -175,26 +194,6 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
-
-        input, select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            line-height: 3rem;
-            height: 3rem;
-            margin: 0;
-            padding: 0;
-            border-radius: 0;
-            border: solid #d0d0d0 1px;
-            background-color: #fff;
-            color: #777;
-            font: inherit;
-            box-shadow: 0 2px 1px rgba(0, 0, 0, .075);
-
-            &:focus {
-                outline: none;
-            }
-        }
 
         select {
             width: 11rem;
@@ -337,9 +336,17 @@ aside {
             font-weight: 700;
             margin: 0 0 .5rem;
         }
+        p input[type="text"] {
+            color: var(--bg-color);
+            border-radius: var(--border-radius);
+            margin: 0 0 .5rem;
+            padding: 0 1rem;
+            width: 100%;
+        }
         ul.share-list {
             display: flex;
             align-items: center;
+            justify-content: flex-end;
 
             li {
                 a {
@@ -369,6 +376,11 @@ aside {
                         border: solid var(--bg-color) 1px;
                     }
                 }
+
+                &:last-child {
+                    a { margin: 0 }
+                }
+
             }
 
             li.twitter a:before { content: '\74'; }
