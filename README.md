@@ -1,9 +1,13 @@
-# [InstaCube](https://instacube.moro.es) (instagram-cube)
+> ⚠️  _Instagram required authentication on its frontend long time ago making the InstaCube client-side scraping approach impossible. The cube UI itself still works, only the data source is gone. Kept here as a time capsule. Feel free to fork it if you want to plug in another data source._
+
+
+
+# [InstaCube](https://moro.es/instacube/) (instagram-cube)
 
 > Your Instagram feed in a cube!
-> https://instacube.moro.es
+> https://moro.es/instacube/
 
-[![InstaCube](cube/images/instagram-cube.jpg "InstaCube")](https://instacube.moro.es)
+[![InstaCube](cube/images/instagram-cube.jpg "InstaCube")](https://moro.es/instacube/)
 
 ---
 
@@ -38,4 +42,4 @@ $ npm run deploy:sync
 
 ---
 
-*Jorge Moreno &mdash; [@alterebro](https://twitter.com/alterebro)*
+*Jorge Moreno &mdash; [@alterebro](https://alterebro.com)*
